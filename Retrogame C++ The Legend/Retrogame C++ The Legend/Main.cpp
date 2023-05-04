@@ -1,14 +1,39 @@
 #include "raylib.h"
 #include "raylib.hpp"
 #include "glm/glm.hpp"
-#include "c++"
+#include "Game.h"
+
+void ShutDown();
 
 int main()
 {
-	Vector2* begin = new Vector2();
-	InitWindow(250, 250, "The Legend Of something");
-	DrawLineEx(new Vector2(0, 0), new Vector2*(255, 255)),20,Color();
+	int ScreenWidth = 1980;
+	int ScreenHeight = 1060;
+	SetConfigFlags(FLAG_FULLSCREEN_MODE);
+	InitWindow(ScreenWidth, ScreenHeight, "The Legend Of something");
+	/*MaximizeWindow();*/
+	SetTargetFPS(60);
+
+	Vector2  start = Vector2{ 0, 0 };
+	Vector2  end = Vector2{(float)ScreenWidth,(float)ScreenHeight};
+
+	while (!WindowShouldClose())
+	{
+		BeginDrawing();
+		ClearBackground(RAYWHITE);
+
+		DrawLineEx(start, end, 20, RED);
+
+		DrawText("Legend of SOMETHING ", 190, 200, 300, RED);
+
+		EndDrawing();
+	}
+}
+
+void ShutDown()
+{
+
 	CloseWindow();
 
-
 }
+
