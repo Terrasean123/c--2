@@ -4,7 +4,7 @@
 //#include "glm/glm.hpp"
 #include "SceneObject.h"
 #include "SpriteObject.h"
-class Actor:SceneObject
+class Actor:public SceneObject
 {
 public:
 	 SpriteObject Sprite;

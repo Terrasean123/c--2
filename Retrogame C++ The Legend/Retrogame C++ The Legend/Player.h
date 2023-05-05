@@ -4,7 +4,7 @@
 #include "raylib.hpp"
 #include "glm/glm.hpp"
 #include "Actor.h"
-class Player:Actor
+class Player:public Actor
 {
 
 };

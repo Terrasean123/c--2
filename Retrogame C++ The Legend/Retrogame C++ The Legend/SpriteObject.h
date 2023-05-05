@@ -3,8 +3,27 @@
 #include "raylib.hpp"
 #include "glm/glm.hpp"
 #include "SceneObject.h"
-class SpriteObject:SceneObject
+#include "string"
+class SpriteObject : public SceneObject
 {
+	public:
+	Texture2D texture = Texture2D();
+	Image image = Image();
+
+	float GetWidth()
+	{
+		 return texture.width;
+	}
+	float GetHeight()
+	{
+		return texture.height;
+	}
+	SpriteObject()
+	{
+	
+	}
+	
+	void Load(std::string filename);
 
 
 

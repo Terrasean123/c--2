@@ -10,7 +10,7 @@ int main()
 	int ScreenWidth = 1980;
 	int ScreenHeight = 1060;
 	SetConfigFlags(FLAG_FULLSCREEN_MODE);
-	InitWindow(ScreenWidth, ScreenHeight, "The Legend Of something");
+	InitWindow(ScreenWidth, ScreenHeight, "Legend of Fractalia");
 	/*MaximizeWindow();*/
 	SetTargetFPS(60);
 
@@ -24,7 +24,7 @@ int main()
 
 		DrawLineEx(start, end, 20, RED);
 
-		DrawText("Legend of SOMETHING ", 190, 200, 300, RED);
+		DrawText("Legend of Fractalia ", 190, 200, 300, RED);
 
 		EndDrawing();
 	}
