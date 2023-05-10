@@ -2,9 +2,10 @@
 
 #include <iostream>
 
-void swap(int first, int second);
+void Swap(int& first, int& second);
 void SortArray(int* arr, int count);
 bool IsArraySorted(const int* arr, int count);
+//void Swap2(int first, int second);
 
 int main(int argc, char** argv)
 {
@@ -31,29 +32,30 @@ bool IsArraySorted(const int* arr, int count)
 	return true;
 }
 
-void swap(int first, int second)
+void Swap(int& first , int& second)
 {
-	int temp = 0;
-	temp = second;
-	second = first;
-	first = temp;
-
+	int temp = first;
+	first = second;
+	second = temp;
 }
 
-
-void SortArray(int* arr, int count)
+void SortArray(int arr[], int count)
 {
-
-	for (int i = 0; i < count - 1; i++)
+	int n = count;
+	bool sorted = false;
+	while (!sorted)
 	{
-
-		if (arr[i + 1] < arr[i])
+		sorted = true;
+		for (int i = 0; i < n - 1; i++)
 		{
-
+			if (arr[i] > arr[i + 1] == true )
+			{
+				Swap(arr[i], arr[i + 1]);
+				sorted = false;
+			}
 		}
-
-
 	}
+
 	for (int i = 0; i < count; i++)
 	{
 		std::cout << arr[i] << std::endl;
