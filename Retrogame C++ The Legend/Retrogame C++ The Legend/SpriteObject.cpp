@@ -7,3 +7,9 @@ void SpriteObject::Load(std::string filename)
     texture = LoadTextureFromImage(image);
 
 }
+
+void SpriteObject::SceneObject::OnDraw()
+{
+
+
+}

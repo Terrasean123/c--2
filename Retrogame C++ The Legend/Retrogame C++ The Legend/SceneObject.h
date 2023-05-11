@@ -15,7 +15,51 @@ public:
 	glm::vec2 globalPosition;
 	void Draw();
 	virtual void OnDraw();
-	void Update();
+	virtual void onUpdate(float deltaTime);
+	void Update(float deltaTime);
+	void UpdateTransform();
+
+
+
+	void SetPosition(float x, float y)
+	{
+		localPosition.x = x;
+		localPosition.y = y;
+
+		UpdateTransform();
+	}
+
+	void SetRotate(float radians)
+	{
+	
+		UpdateTransform();
+	}
+
+	void SetScale(float width, float height)
+	{
+		
+		UpdateTransform();
+	}
+
+	void Translate(float x, float y)
+	{
+		localPosition.x += x;
+		localPosition.y += y;
+		
+		UpdateTransform();
+	}
+
+	void Rotate(float radians)
+	{
+		
+		UpdateTransform();
+	}
+
+	void Scale(float width, float height)
+	{
+		;
+		UpdateTransform();
+	}
 
 	SceneObject* GetParent()
 	{
@@ -33,31 +77,15 @@ public:
 	}
 
 	int GetIndex(SceneObject Child);
-	
+
 
 	void AddChild(SceneObject Child);
-	
+
 
 	void removeChild(SceneObject child);
-	/*{
 
-		children.erase(children.begin() + GetIndex(child));
-		child.parent = nullptr;
+	~SceneObject();
 
-	}*/
-
-	~SceneObject()
-	{
-		if (parent != nullptr)
-		{
-			parent->removeChild(*this);
-		}
-		for(SceneObject so : children)
-		{
-			so.parent = nullptr;
-		}
-
-	}
 
 };
 

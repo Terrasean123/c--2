@@ -6,13 +6,14 @@
 #include "string"
 class SpriteObject : public SceneObject
 {
-	public:
+public:
 	Texture2D texture = Texture2D();
 	Image image = Image();
 
+	void Load(std::string filename);
 	float GetWidth()
 	{
-		 return texture.width;
+		return texture.width;
 	}
 	float GetHeight()
 	{
@@ -20,10 +21,10 @@ class SpriteObject : public SceneObject
 	}
 	SpriteObject()
 	{
-	
+
 	}
-	
-	void Load(std::string filename);
+
+	void OnDraw();
 
 
 
