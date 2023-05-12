@@ -7,8 +7,9 @@
 class Actor:public SceneObject
 {
 public:
-	 SpriteObject Sprite;
-
+	SpriteObject sprite;
+	virtual void Die();
+	virtual void ActorBehaviour();
 
 };
 

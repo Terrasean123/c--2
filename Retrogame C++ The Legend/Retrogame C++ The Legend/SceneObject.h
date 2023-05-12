@@ -2,9 +2,7 @@
 #include "raylib.h"
 #include "raylib.hpp"
 #include "glm/glm.hpp"
-#include "List"
 #include "vector"
-#include "assert.h"
 class SceneObject
 {
 protected:
@@ -15,7 +13,7 @@ public:
 	glm::vec2 globalPosition;
 	void Draw();
 	virtual void OnDraw();
-	virtual void onUpdate(float deltaTime);
+	virtual void OnUpdate(float deltaTime);
 	void Update(float deltaTime);
 	void UpdateTransform();
 
@@ -57,7 +55,7 @@ public:
 
 	void Scale(float width, float height)
 	{
-		;
+		
 		UpdateTransform();
 	}
 
@@ -88,4 +86,5 @@ public:
 
 
 };
-
+ glm::vec2 ConvertRayVec(Vector2 vec2);
+ Vector2 ConvertGlmVec(glm::vec2 vec2);

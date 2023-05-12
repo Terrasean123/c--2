@@ -1,17 +1,42 @@
 #include "Game.h"
-//#define VEC2 glm::vec2
-//static glm::vec2 ConvertRayVec(Vector2 vec2)
-//{
-//	VEC2 glmVec = glm::vec2(vec2.x, vec2.y);
-//	return glmVec;
-//
-//};
-//
-// static Vector2 ConvertGlmVec(glm::vec2 vec2)
-//{
-//	Vector2 rayVec;
-//	rayVec.x = vec2.x;
-//	rayVec.y = vec2.y;
-//	return rayVec;
-//};
 
+
+Game::Game()
+{
+
+}
+
+void Game::init()
+{
+	player_Zata.sprite.Load("L:/C++ introduction project/c--2/Retrogame C++ The Legend/SpriteFolder/ ZataSprite-0001.png");
+	player_Zata.sprite.SetPosition(-player_Zata.sprite.GetWidth() / 2.0f, player_Zata.sprite.GetWidth() / 2.0f);
+
+	player_Zata.AddChild(player_Zata.sprite);
+}
+
+
+void  Game::debug()
+{
+
+
+}
+
+void Game::Update()
+{
+
+
+}
+
+
+void Game::Draw()
+{
+	BeginDrawing();
+	ClearBackground(RAYWHITE);
+	//DrawText("Legend of Fractalia ", 190, 200, 300, RED);
+
+	player_Zata.Draw();
+
+	EndDrawing();
+
+
+}

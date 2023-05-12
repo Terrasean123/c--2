@@ -1,5 +1,5 @@
 #include "SpriteObject.h"
-
+#include "SceneObject.h"
 
 void SpriteObject::Load(std::string filename)
 {
@@ -8,8 +8,7 @@ void SpriteObject::Load(std::string filename)
 
 }
 
-void SpriteObject::SceneObject::OnDraw()
+void SpriteObject::OnDraw() 
 {
-
-
+    DrawTextureEx(texture,ConvertGlmVec(globalPosition),90,100,WHITE );
 }

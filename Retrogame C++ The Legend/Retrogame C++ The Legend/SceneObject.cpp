@@ -1,8 +1,9 @@
 #include "SceneObject.h"
+#define VEC2 glm::vec2
 
 int SceneObject::GetIndex(SceneObject Child)
 {
-	int childIndex;
+	int childIndex = 0;
 	for (int i = 0; i < GetChildCount(); i++)
 	{
 		if (&Child == &children[i])
@@ -11,6 +12,7 @@ int SceneObject::GetIndex(SceneObject Child)
 		}
 
 	}
+	return childIndex;
 
 }
 
@@ -26,9 +28,20 @@ void SceneObject::AddChild(SceneObject Child)
 	// add new child to collection
 }
 
+
+void SceneObject::OnDraw()
+{
+
+}
+void SceneObject::OnUpdate(float deltaTime)
+{
+
+
+}
+
 void SceneObject::Update(float deltaTime)
 {
-	onUpdate(deltaTime);
+	OnUpdate(deltaTime);
 
 	for (SceneObject child : children)
 	{
@@ -54,7 +67,19 @@ void SceneObject::removeChild(SceneObject child)
 	children.erase(children.begin() + GetIndex(child));
 	child.parent = nullptr;
 
+
+
 }
+
+void SceneObject::Draw()
+{
+	OnDraw();
+	for (SceneObject child : children)
+	{
+		child.Draw();
+	}
+}
+
 
 SceneObject::~SceneObject()
 {
@@ -69,6 +94,19 @@ SceneObject::~SceneObject()
 
 }
 
+glm::vec2 ConvertRayVec(Vector2 vec2)
+{
+	VEC2 glmVec = glm::vec2(vec2.x, vec2.y);
+	return glmVec;
 
+};
+
+Vector2 ConvertGlmVec(glm::vec2 vec2)
+{
+	Vector2 rayVec;
+	rayVec.x = vec2.x;
+	rayVec.y = vec2.y;
+	return rayVec;
+};
 
 

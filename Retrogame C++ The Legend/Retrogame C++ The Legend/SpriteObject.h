@@ -24,7 +24,7 @@ public:
 
 	}
 
-	void OnDraw();
+	void OnDraw()override;
 
 
 
