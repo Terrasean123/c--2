@@ -1,12 +1,12 @@
 #include "SceneObject.h"
 #define VEC2 glm::vec2
 
-int SceneObject::GetIndex(SceneObject Child)
+int SceneObject::GetIndex(SceneObject* Child)
 {
 	int childIndex = 0;
 	for (int i = 0; i < GetChildCount(); i++)
 	{
-		if (&Child == &children[i])
+		if (Child == children[i])
 		{
 			childIndex = i;
 		}
@@ -16,13 +16,13 @@ int SceneObject::GetIndex(SceneObject Child)
 
 }
 
-void SceneObject::AddChild(SceneObject Child)
+void SceneObject::AddChild(SceneObject* Child)
 {
 	// make sure it doesn't have a parent already
 	// assign "this as parent
-	if (Child.GetParent() == nullptr)
+	if (Child->GetParent() == nullptr)
 	{
-		Child.parent = this;
+		Child->parent = this;
 		children.push_back(Child);
 	}
 	// add new child to collection
@@ -33,7 +33,7 @@ void SceneObject::OnDraw()
 {
 
 }
-void SceneObject::OnUpdate(float deltaTime)
+ void SceneObject::OnUpdate(float deltaTime)
 {
 
 
@@ -43,9 +43,9 @@ void SceneObject::Update(float deltaTime)
 {
 	OnUpdate(deltaTime);
 
-	for (SceneObject child : children)
+	for (SceneObject* child : children)
 	{
-		child.Update(deltaTime);
+		child->Update(deltaTime);
 	}
 }
 
@@ -56,16 +56,16 @@ void SceneObject::UpdateTransform()
 	else
 		globalPosition = localPosition;
 
-	for (SceneObject child : children)
-		child.UpdateTransform();
+	for (SceneObject* child : children)
+		child->UpdateTransform();
 }
 
 
-void SceneObject::removeChild(SceneObject child)
+void SceneObject::removeChild(SceneObject* child)
 {
 
 	children.erase(children.begin() + GetIndex(child));
-	child.parent = nullptr;
+	child->parent = nullptr;
 
 
 
@@ -74,9 +74,9 @@ void SceneObject::removeChild(SceneObject child)
 void SceneObject::Draw()
 {
 	OnDraw();
-	for (SceneObject child : children)
+	for (SceneObject* child : children)
 	{
-		child.Draw();
+		child->Draw();
 	}
 }
 
@@ -85,11 +85,11 @@ SceneObject::~SceneObject()
 {
 	if (parent != nullptr)
 	{
-		parent->removeChild(*this);
+		parent->removeChild(this);
 	}
-	for (SceneObject so : children)
+	for (SceneObject* so : children)
 	{
-		so.parent = nullptr;
+		so->parent = nullptr;
 	}
 
 }

@@ -1,6 +1,8 @@
 #include "SpriteObject.h"
 #include "SceneObject.h"
 
+#include <iostream>
+
 void SpriteObject::Load(std::string filename)
 {
     image = LoadImage(filename.c_str());
@@ -10,5 +12,7 @@ void SpriteObject::Load(std::string filename)
 
 void SpriteObject::OnDraw() 
 {
-    DrawTextureEx(texture,ConvertGlmVec(globalPosition),90,100,WHITE );
+    DrawTextureEx(texture,ConvertGlmVec(globalPosition),0,10,WHITE );
+
+
 }

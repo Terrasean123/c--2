@@ -7,7 +7,7 @@ class SceneObject
 {
 protected:
 	SceneObject* parent = nullptr;
-	std::vector<SceneObject> children;
+	std::vector<SceneObject*> children;
 public:
 	glm::vec2 localPosition;
 	glm::vec2 globalPosition;
@@ -69,18 +69,18 @@ public:
 		return children.size();
 	}
 
-	SceneObject GetChild(int index)
+	SceneObject* GetChild(int index)
 	{
 		return children[index];
 	}
 
-	int GetIndex(SceneObject Child);
+	int GetIndex(SceneObject* Child);
 
 
-	void AddChild(SceneObject Child);
+	void AddChild(SceneObject* Child);
 
 
-	void removeChild(SceneObject child);
+	void removeChild(SceneObject* child);
 
 	~SceneObject();
 

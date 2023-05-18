@@ -30,7 +30,7 @@ public:
 	void debug();
 	void Update();
 	void Draw();
-
+	void PlayerControls();
 };
 
 
