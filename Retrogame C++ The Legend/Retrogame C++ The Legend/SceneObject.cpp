@@ -52,7 +52,7 @@ void SceneObject::Update(float deltaTime)
 void SceneObject::UpdateTransform()
 {
 	if (parent != nullptr)
-		globalPosition = parent->globalPosition * localPosition;
+		globalPosition =  parent->globalPosition + localPosition;
 	else
 		globalPosition = localPosition;
 

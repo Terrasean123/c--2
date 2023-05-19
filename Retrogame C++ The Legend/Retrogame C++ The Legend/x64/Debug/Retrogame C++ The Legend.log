@@ -1,5 +1,7 @@
 ﻿  Game.cpp
 L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\SceneObject.h(69,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\SpriteObject.h(16,17): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\SpriteObject.h(20,17): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\SpriteObject.h(18,17): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\SpriteObject.h(22,17): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Game.cpp(16,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Game.cpp(16,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Retrogame C++ The Legend.vcxproj -> L:\C++ introduction project\c--2\Retrogame C++ The Legend\x64\Debug\Retrogame C++ The Legend.exe

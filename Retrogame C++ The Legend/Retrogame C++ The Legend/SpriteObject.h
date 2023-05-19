@@ -7,10 +7,12 @@
 class SpriteObject : public SceneObject
 {
 public:
-	Texture2D texture = Texture2D();
-	Image image = Image();
+	Texture2D texture;
+	Image image;
 
 	void Load(std::string filename);
+	
+
 	float GetWidth()
 	{
 		return texture.width;
