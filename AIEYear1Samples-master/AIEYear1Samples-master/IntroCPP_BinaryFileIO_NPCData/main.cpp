@@ -1,23 +1,3 @@
-/*******************************************************************************************
-*
-*   raylib [core] example - Basic window
-*
-*   Welcome to raylib!
-*
-*   To test examples, just press F6 and execute raylib_compile_execute script
-*   Note that compiled executable is placed in the same folder as .c file
-*
-*   You can find all basic examples on C:\raylib\raylib\examples folder or
-*   raylib official webpage: www.raylib.com
-*
-*   Enjoy using raylib. :)
-*
-*   This example has been created using raylib 1.0 (www.raylib.com)
-*   raylib is licensed under an unmodified zlib/libpng license (View raylib.h for details)
-*
-*   Copyright (c) 2014 Ramon Santamaria (@raysan5)
-*
-********************************************************************************************/
 
 #include "raylib.h"
 #include "DataFile.h"
@@ -36,7 +16,7 @@ int main(int argc, char* argv[])
 
     data.Load("npc_data.dat");
 
-    DataFile::Record* currentRecord = data.GetRecord(currentRecordIdx);
+    DataFile::Record* currentRecord = data.GetRecord(currentRecordIdx, "npc_data.dat");
     Texture2D recordTexture = LoadTextureFromImage(currentRecord->image);
 
 
@@ -58,8 +38,12 @@ int main(int argc, char* argv[])
             {
                 currentRecordIdx = 0;
             }
-            currentRecord = data.GetRecord(currentRecordIdx);
+            delete currentRecord;
+            currentRecord = data.GetRecord(currentRecordIdx, "npc_data.dat");
+            UnloadTexture(recordTexture);
             recordTexture = LoadTextureFromImage(currentRecord->image);
+            UnloadImage(currentRecord->image);
+
         }
 
         if (IsKeyPressed(KEY_RIGHT))
@@ -70,8 +54,14 @@ int main(int argc, char* argv[])
                 // previously the record iterator was going out of bounds of the vector array 
                 currentRecordIdx = data.GetRecordCount()-1;
             }
-            currentRecord = data.GetRecord(currentRecordIdx);
+
+            delete currentRecord;
+
+            currentRecord = data.GetRecord(currentRecordIdx, "npc_data.dat");
+            UnloadTexture(recordTexture);
             recordTexture = LoadTextureFromImage(currentRecord->image);
+            UnloadImage(currentRecord->image);
+
         }
 
 
