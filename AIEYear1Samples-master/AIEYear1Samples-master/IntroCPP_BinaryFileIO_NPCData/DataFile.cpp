@@ -25,7 +25,7 @@ void DataFile::AddRecord(string imageFilename, string name, int age)
 	recordCount++;
 }
 
-DataFile::Record* DataFile::GetRecord(int index, std::string filename)
+DataFile::Record* DataFile::GetRecord(int index, std::string filename)// because get record needs to access the infile stream directly now a new parameter had to be made 
 {
 	ifstream infile(filename, ios::binary);
 
@@ -57,14 +57,14 @@ DataFile::Record* DataFile::GetRecord(int index, std::string filename)
 	r->image = img;
 	r->name = string(name, nameSize);
 	r->age = age;
-	//records.push_back(r);
+	//records.push_back(r);  //no pushback required here as we are just getting the record not loading it to some place
 
 	delete[] imgdata;
 	delete[] name;
 
 
 
-	return r;
+	return r; // return the record required
 }
 
 void DataFile::Save(string filename)
@@ -96,7 +96,7 @@ void DataFile::Save(string filename)
 	outfile.close();
 }
 
-void DataFile::Load(string filename/*,int index*/)
+void DataFile::Load(string filename)
 {
 	Clear();
 
@@ -110,7 +110,7 @@ void DataFile::Load(string filename/*,int index*/)
 
 	for (int i = 0; i < recordCount; i++)
 	{
-		recordPositions.push_back(infile.tellg());
+		recordPositions.push_back(infile.tellg());// record index positions saved here
 
 		int nameSize = 0;
 		int ageSize = 0;
@@ -136,9 +136,10 @@ void DataFile::Load(string filename/*,int index*/)
 
 		Record* r = new Record();
 		r->image = img;
-		r->name = string(name, nameSize);
+		r->name = string(name, nameSize);// This was using the incorrect constructor; previously the constructor used copied the character sequence assuming it was already null terminated.
+		//The fact that  our char sequence wasnt null terminated was causing the the script to overread.
+	    //the new constructor uses the name size to clarify where the  code should stop reading  
 		r->age = age;
-		//records.push_back(r);
 
 		delete[] imgdata;
 		delete[] name;
