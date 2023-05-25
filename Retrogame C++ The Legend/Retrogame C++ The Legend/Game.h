@@ -6,6 +6,7 @@
 #include "SceneObject.h"
 #include "SpriteObject.h"
 #include "Actor.h"
+#include "Map.h"
 
 class Game
 {
@@ -19,6 +20,8 @@ private:
 	float m_timer = 0;
 	float deltaTime = 0.005f;
 	int previousCount = 0;
+	Map GameMap = Map();
+    
 public:
 	float time = GetFrameTime();
 	Player player_Zata;

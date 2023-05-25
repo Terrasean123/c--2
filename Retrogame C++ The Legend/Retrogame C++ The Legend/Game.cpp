@@ -14,6 +14,8 @@ void Game::init()
 	player_Zata.SetPosition(-player_Zata.sprite.GetWidth() / 2.0f, player_Zata.sprite.GetWidth() / 2.0f);
 
 	player_Zata.Translate(GetScreenWidth() / 2, GetScreenHeight() / 2);
+	GameMap.CreateMap();
+	GameMap.DrawMap();
 }
 
 

@@ -8,7 +8,7 @@ public:
 	int TileMapMax = 100;
 	std::vector<Tile> tileMap;
 
-	void CreateMap();
+	void CreateMap(int ScreenWidth,int ScreenHeigth);
 		void DrawMap();
 
 };
