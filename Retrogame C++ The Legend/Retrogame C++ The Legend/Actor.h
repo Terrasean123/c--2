@@ -10,6 +10,7 @@ public:
 	SpriteObject sprite;
 	virtual void Die();
 	virtual void ActorBehaviour();
-
+	Actor();
+	~Actor();
 };
 

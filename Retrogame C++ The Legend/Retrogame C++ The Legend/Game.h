@@ -29,6 +29,7 @@ public:
 	Camera2D camera = Camera2D();
 
 	Game();
+	~Game();
 	void init();
 	void debug();
 	void Update();

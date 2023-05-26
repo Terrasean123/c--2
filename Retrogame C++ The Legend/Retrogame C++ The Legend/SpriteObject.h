@@ -11,7 +11,7 @@ public:
 	Image image;
 
 	void Load(std::string filename);
-	
+
 
 	float GetWidth()
 	{
@@ -22,6 +22,10 @@ public:
 		return texture.height;
 	}
 	SpriteObject()
+	{
+
+	}
+	~SpriteObject()
 	{
 
 	}

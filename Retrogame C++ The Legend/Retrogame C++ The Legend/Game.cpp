@@ -1,21 +1,19 @@
 #include "Game.h"
+#include "Map.h"
 #include <iostream>
 
 Game::Game()
 {
-
-}
-
-void Game::init()
-{
-	player_Zata.AddChild(&player_Zata.sprite);
-
+player_Zata.AddChild(&player_Zata.sprite);
 	player_Zata.sprite.Load("L:/C++ introduction project/c--2/Retrogame C++ The Legend/SpriteFolder/ ZataSprite-0001.png");
 	player_Zata.SetPosition(-player_Zata.sprite.GetWidth() / 2.0f, player_Zata.sprite.GetWidth() / 2.0f);
-
 	player_Zata.Translate(GetScreenWidth() / 2, GetScreenHeight() / 2);
-	GameMap.CreateMap();
-	GameMap.DrawMap();
+}
+
+Game::~Game()
+{
+
+
 }
 
 
@@ -33,6 +31,8 @@ void Game::Update()
 
 
 }
+
+
 
 void Game::PlayerControls()
 {
@@ -69,6 +69,7 @@ void Game::Draw()
 {
 	BeginDrawing();
 	ClearBackground(RAYWHITE);
+	GameMap.DrawMap();
 	player_Zata.Draw();
 
 	EndDrawing();
