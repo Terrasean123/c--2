@@ -1,16 +1,16 @@
 #pragma once
 #include "SceneObject.h"
 #include "SpriteObject.h"
-#include "map.h"
+#include "Map.h"
 
 
 class Tile :public SceneObject
 {
 public:
-	Map *mapRef = nullptr;
-	SpriteObject* currentSprite= nullptr;
-	Tile();
-	Tile(Map& mapRef);
+	Map* mapRef;
+	SpriteObject* currentSprite;
+	//Tile();
+	Tile(Map* mapRef);
 	~Tile();
 
 };

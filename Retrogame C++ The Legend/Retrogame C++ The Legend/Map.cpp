@@ -34,7 +34,7 @@ void Map::DrawMap()
 			float  xpos = colid * tileWidth;
 			float ypos = rowid * tileHeight;
 			int index = rowid * COLS + colid;
-			Tile tile = Tile(*this);
+			Tile tile = new Tile(this);
 			tile.globalPosition.x = xpos /**m_windowWidth*/;
 			tile.globalPosition.y = ypos/* *m_windowHeight*/;
 			Vector2 vec2 = Vector2{ tile.globalPosition.x,tile.globalPosition.y };
