@@ -69,7 +69,8 @@ void Game::Draw()
 {
 	BeginDrawing();
 	ClearBackground(RAYWHITE);
-	GameMap.DrawMap();
+	//GameMap.DrawMap();
+	GameMap.CreateMap();
 	player_Zata.Draw();
 
 	EndDrawing();

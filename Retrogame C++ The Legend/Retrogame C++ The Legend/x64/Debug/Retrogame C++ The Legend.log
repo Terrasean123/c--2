@@ -1,37 +1,9 @@
-﻿  Game.cpp
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\SceneObject.h(69,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+﻿  Map.cpp
+L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\SceneObject.h(68,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
 L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\SpriteObject.h(18,17): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
 L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\SpriteObject.h(22,17): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Tile.h(10,5): error C2143: syntax error: missing ';' before '*'
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Tile.h(10,5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Tile.h(10,13): error C2238: unexpected token(s) preceding ';'
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Tile.h(13,7): error C2061: syntax error: identifier 'Map'
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Map.h(23,38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Map.h(24,40): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Game.cpp(10,64): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Game.cpp(10,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Main.cpp
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\SceneObject.h(69,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\SpriteObject.h(18,17): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\SpriteObject.h(22,17): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Tile.h(10,5): error C2143: syntax error: missing ';' before '*'
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Tile.h(10,5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Tile.h(10,13): error C2238: unexpected token(s) preceding ';'
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Tile.h(13,7): error C2061: syntax error: identifier 'Map'
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Map.h(23,38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Map.h(24,40): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  Map.cpp
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\SceneObject.h(69,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\SpriteObject.h(18,17): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\SpriteObject.h(22,17): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Tile.h(10,5): error C2143: syntax error: missing ';' before '*'
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Tile.h(10,5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Tile.h(10,13): error C2238: unexpected token(s) preceding ';'
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Tile.h(13,7): error C2061: syntax error: identifier 'Map'
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Map.h(23,38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Map.h(24,40): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Map.cpp(34,16): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Map.cpp(35,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Map.cpp(37,25): error C2440: '<function-style-cast>': cannot convert from 'initializer list' to 'Tile'
-L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Map.cpp(37,25): message : No constructor could take the source type, or constructor overload resolution was ambiguous
-  Generating Code...
+L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Map.cpp(6,34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Map.cpp(7,36): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Map.cpp(47,16): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+L:\C++ introduction project\c--2\Retrogame C++ The Legend\Retrogame C++ The Legend\Map.cpp(48,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  Retrogame C++ The Legend.vcxproj -> L:\C++ introduction project\c--2\Retrogame C++ The Legend\x64\Debug\Retrogame C++ The Legend.exe

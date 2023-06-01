@@ -10,20 +10,20 @@ public:
 
 	static const int COLS = 10;
 	static const int ROWS = 10;
-	static SpriteObject debugSprite;
-	static SpriteObject GrassSprite;
-	static SpriteObject GroundSprite;
-	static SpriteObject StoneSprite;
-	static SpriteObject WaterSprite;
-	static SpriteObject TreeSprite;
+	SpriteObject debugSprite;
+	SpriteObject GrassSprite;
+	SpriteObject GroundSprite;
+	SpriteObject StoneSprite;
+	SpriteObject WaterSprite;
+	SpriteObject TreeSprite;
 	//std::vector<Tile> tileMap;
 	int TileMap[ROWS * COLS];
 	Map();
 	~Map();
-	int tileWidth = debugSprite.GetWidth();
-	int tileHeight = debugSprite.GetHeight();
+	int tileWidth;
+	int tileHeight;
 
-	void CreateMap(int ScreenWidth, int ScreenHeigth);
+	void CreateMap();
 	void DrawMap();
 
 };

@@ -3,7 +3,8 @@
 Map::Map()
 {
 	debugSprite.Load("L:/C++ introduction project/c--2/Retrogame C++ The Legend/SpriteFolder/DebugTileSprite-0001.png");
-
+	tileWidth = debugSprite.GetWidth();
+	tileHeight = debugSprite.GetHeight();
 }
 
 Map::~Map()
@@ -13,15 +14,27 @@ Map::~Map()
 }
 
 
-void Map::CreateMap(int ScreenWidth, int ScreeHeigth)
+void Map::CreateMap()
 {
 
-	/*for (int i = 0; i < TileMapMax; i++)
+	float scale = 5;
+
+	float widthNumber = m_windowWidth / (tileWidth * scale);
+	float heightNumber = m_windowHeight / (tileHeight * scale);
+
+	for (int rowID = 0; rowID < heightNumber; rowID++)
 	{
-		Tile tile = Tile();
-		tile.debugSprite.Load("L:/C++ introduction project/c--2/Retrogame C++ The Legend/SpriteFolder/DebugTileSprite-0001.png");
-		tileMap.push_back(tile);
-	}*/
+		for (int colID = 0; colID < widthNumber; colID++)
+		{
+			float  xpos = colID * tileWidth * scale;
+			float ypos = rowID * tileHeight * scale;
+			Tile tile = Tile(this);
+			tile.globalPosition.x = xpos/* + scale*/;
+			tile.globalPosition.y = ypos + scale+5;
+			Vector2 vec2 = Vector2{ tile.globalPosition.x,tile.globalPosition.y };
+			DrawTextureEx(tile.currentSprite->texture, vec2, 0, scale, WHITE);
+		}
+	}
 
 }
 
@@ -34,9 +47,9 @@ void Map::DrawMap()
 			float  xpos = colid * tileWidth;
 			float ypos = rowid * tileHeight;
 			int index = rowid * COLS + colid;
-			Tile tile = new Tile(this);
-			tile.globalPosition.x = xpos /**m_windowWidth*/;
-			tile.globalPosition.y = ypos/* *m_windowHeight*/;
+			Tile tile = Tile(this);
+			tile.globalPosition.x = xpos;
+			tile.globalPosition.y = ypos;
 			Vector2 vec2 = Vector2{ tile.globalPosition.x,tile.globalPosition.y };
 			DrawTextureEx(tile.currentSprite->texture, vec2, 0, 1, WHITE);
 

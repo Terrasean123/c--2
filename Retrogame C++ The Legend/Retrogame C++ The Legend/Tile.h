@@ -1,8 +1,9 @@
 #pragma once
 #include "SceneObject.h"
 #include "SpriteObject.h"
-#include "Map.h"
+//#include "Map.h"
 
+class Map;
 
 class Tile :public SceneObject
 {

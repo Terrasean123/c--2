@@ -7,11 +7,12 @@
 
 Tile::Tile(Map* mapRef)
 {
-	currentSprite = &mapRef->debugSprite;
+	this->mapRef = mapRef;
+	currentSprite = &this->mapRef->debugSprite;
 	this->AddChild(currentSprite);
 }
 
 Tile::~Tile()
 {
-	
+
 }
