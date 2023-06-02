@@ -10,6 +10,7 @@ public:
 	Texture2D texture;
 	Image image;
 
+	float spriteScale = 10;
 	void Load(std::string filename);
 
 
