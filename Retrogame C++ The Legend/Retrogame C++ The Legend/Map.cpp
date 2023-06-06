@@ -2,9 +2,9 @@
 
 Map::Map()
 {
-	debugSprite.Load("L:/C++ introduction project/c--2/Retrogame C++ The Legend/SpriteFolder/DebugTileSprite-0001.png");
-	GrassSprite.Load("L:/C++ introduction project/c--2/Retrogame C++ The Legend/SpriteFolder/GrassSprite-0001.png");
-	GroundSprite.Load("L:/C++ introduction project/c--2/Retrogame C++ The Legend/SpriteFolder/DirtPathSprite-0001.png");
+	debugSprite.Load("../../SpriteFolder/DebugTileSprite-0001.png");
+	GrassSprite.Load("../../SpriteFolder/GrassSprite-0001.png");
+	GroundSprite.Load("../../SpriteFolder/DirtPathSprite-0001.png");
 	tileWidth = debugSprite.GetWidth();
 	tileHeight = debugSprite.GetHeight();
 	Creatormode = true;

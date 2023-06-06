@@ -5,7 +5,7 @@
 Game::Game()
 {
 player_Zata.AddChild(&player_Zata.sprite);
-	player_Zata.sprite.Load("L:/C++ introduction project/c--2/Retrogame C++ The Legend/SpriteFolder/ ZataSprite-0001.png");
+	player_Zata.sprite.Load("../../SpriteFolder/ ZataSprite-0001.png");
 	player_Zata.SetPosition(-player_Zata.sprite.GetWidth() / 2.0f, player_Zata.sprite.GetWidth() / 2.0f);
 	player_Zata.Translate(GetScreenWidth() / 2, GetScreenHeight() / 2);
 	player_Zata.sprite.spriteScale = 5;
