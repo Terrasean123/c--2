@@ -8,6 +8,9 @@ class Player:public Actor
 public:
 	Player();
 	~Player();
+	
+	SceneObject Sword;
+
 
 };
 
