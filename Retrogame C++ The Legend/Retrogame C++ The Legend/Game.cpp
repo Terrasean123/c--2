@@ -5,14 +5,7 @@
 
 Game::Game()
 {
-	player_Zata.AddChild(&player_Zata.sprite);
 	player_Zata.sprite.Load("../../SpriteFolder/ ZataSprite-0001.png");
-	player_Zata.SetPosition(-player_Zata.sprite.GetWidth() / 2.0f, player_Zata.sprite.GetWidth() / 2.0f);
-	player_Zata.Translate(GetScreenWidth() / 2, GetScreenHeight() / 2);
-	player_Zata.sprite.spriteScale = 5;
-	player_Zata.actorSpeed = 20;
-	player_Zata.actorMaxSpeed = 300;
-
 }
 
 Game::~Game()
@@ -24,12 +17,21 @@ Game::~Game()
 
 void  Game::debug(bool debugging)
 {
+	
 	if (debugging == true)
 	{
-		std::cout << "seconds:" << gameTime.GetDeltaTime() << std::endl;
-		float movedDistance = player_Zata.actorSpeed * gameTime.GetDeltaTime();
-		player_Zata.globalPosition.y = player_Zata.globalPosition.y + movedDistance;
-		player_Zata.SetPosition(player_Zata.globalPosition.x, player_Zata.globalPosition.y);
+		//std::cout << "seconds:" << gameTime.GetDeltaTime() << std::endl;
+		if(lastspeed < player_Zata.actorSpeed)
+		{
+			lastspeed = player_Zata.actorSpeed;
+			cout <<"player Actor speed :" << lastspeed << endl;
+
+		}
+		if (lastspeed > player_Zata.actorSpeed)
+		{
+			lastspeed = player_Zata.actorSpeed;
+			cout << "player Actor speed :" << lastspeed << endl;
+		}
 	}
 }
 
@@ -38,7 +40,7 @@ void Game::Update()
 	PlayerControls();
 	GameMap.ManageTiles();
 	player_Zata.Update(0);
-	debug(false);
+	debug(true);
 
 
 }
@@ -47,6 +49,25 @@ void Game::Update()
 
 void Game::PlayerControls()
 {
+	float lastrot = 0;
+	if (IsKeyDown(KEY_L))
+	{
+		player_Zata.swordSprite.rotation++;
+		if (lastrot < player_Zata.swordSprite.rotation)
+		{
+			 lastrot = player_Zata.swordSprite.rotation;
+			cout << "sword rotation:" << player_Zata.swordSprite.rotation << endl;
+
+		}
+	}
+	
+	if(IsKeyReleased(MOUSE_BUTTON_LEFT))
+	{
+
+	
+	
+	
+	}
 
 	if (IsKeyDown(KEY_K))
 	{
@@ -93,9 +114,13 @@ void Game::Draw()
 {
 	BeginDrawing();
 	ClearBackground(RAYWHITE);
-	//GameMap.DrawMap();
 	GameMap.CreateMap();
-	player_Zata.Draw();
+	//player_Zata.swordSprite.Draw();
+	player_Zata.DrawReverse();
+
+    //DrawRectangle(player_Zata.globalPosition.x, player_Zata.globalPosition.y ,20,20 ,RED);
+//	DrawRectangle(player_Zata.swordObject.globalPosition.x, player_Zata.swordObject.globalPosition.y, 20, 20, RED);
+//	DrawRectangle(player_Zata.swordSprite.globalPosition.x, player_Zata.swordSprite.globalPosition.y, 20, 20, RED);
 	EndDrawing();
 
 

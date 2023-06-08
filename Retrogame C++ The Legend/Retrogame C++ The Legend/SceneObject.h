@@ -10,7 +10,9 @@ protected:
 public:
 	glm::vec2 localPosition;
 	glm::vec2 globalPosition;
+	float rotation = 0;
 	void Draw();
+	void DrawReverse();
 	virtual void OnDraw();
 	virtual void OnUpdate(float deltaTime);
 	void Update(float deltaTime);

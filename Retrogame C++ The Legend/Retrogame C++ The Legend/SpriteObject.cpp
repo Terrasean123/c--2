@@ -16,7 +16,7 @@ void SpriteObject::Load(std::string filename)
 
 void SpriteObject::OnDraw() 
 {
-    DrawTextureEx(texture, ConvertGlmVec(globalPosition), 0, spriteScale, WHITE);
+    DrawTextureEx(texture, ConvertGlmVec(globalPosition),this->rotation,spriteScale, Tint);
 
 
 }

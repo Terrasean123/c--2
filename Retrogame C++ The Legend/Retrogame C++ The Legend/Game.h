@@ -31,7 +31,7 @@ public:
 	void Update();
 	void Draw();
 	void PlayerControls();
-	
+	float lastspeed = player_Zata.actorSpeed;
 	class Timer
 	{
 	public:
@@ -51,8 +51,8 @@ public:
 		void Stopwatch();
 
 	};
-	Timer gameTime;
 
+	Timer gameTime;
 
 
 

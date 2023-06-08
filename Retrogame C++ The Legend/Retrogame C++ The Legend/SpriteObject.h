@@ -11,6 +11,8 @@ public:
 	Image image;
 
 	float spriteScale = 10;
+	
+	Color Tint = WHITE;
 	void Load(std::string filename);
 
 

@@ -33,7 +33,7 @@ void SceneObject::OnDraw()
 {
 
 }
- void SceneObject::OnUpdate(float deltaTime)
+void SceneObject::OnUpdate(float deltaTime)
 {
 
 
@@ -52,7 +52,7 @@ void SceneObject::Update(float deltaTime)
 void SceneObject::UpdateTransform()
 {
 	if (parent != nullptr)
-		globalPosition =  parent->globalPosition + localPosition;
+		globalPosition = parent->globalPosition + localPosition;
 	else
 		globalPosition = localPosition;
 
@@ -77,6 +77,15 @@ void SceneObject::Draw()
 	for (SceneObject* child : children)
 	{
 		child->Draw();
+	}
+}
+
+void SceneObject::DrawReverse()
+{
+	OnDraw();
+	for (int i = this->children.size()-1; i !=-1; i--)
+	{
+		children[i]->Draw();
 	}
 }
 

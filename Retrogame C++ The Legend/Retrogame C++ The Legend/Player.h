@@ -9,7 +9,10 @@ public:
 	Player();
 	~Player();
 	
-	SceneObject Sword;
+	SceneObject swordObject;
+	SpriteObject swordSprite;
+
+	float SwordRotation(int rotationIterator);
 
 
 };
