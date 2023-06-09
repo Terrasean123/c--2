@@ -11,8 +11,13 @@ public:
 	Image image;
 
 	float spriteScale = 10;
-	
+	float individualSpriteHeight = 0;
+	float individualSpriteWidth = 0;
+	float aniIterator = 3;
+	bool nonActor= true;
 	Color Tint = WHITE;
+
+
 	void Load(std::string filename);
 
 

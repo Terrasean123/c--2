@@ -11,6 +11,12 @@ public:
 	
 	SceneObject swordObject;
 	SpriteObject swordSprite;
+	animationRange forwardAnim;
+	animationRange backAnim;
+	animationRange rightAnim;
+	animationRange leftAnim;
+
+
 
 	float SwordRotation(int rotationIterator);
 

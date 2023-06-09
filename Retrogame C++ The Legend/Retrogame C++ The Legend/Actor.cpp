@@ -26,6 +26,8 @@ void Actor::Move(float deltaTime, bool Vertical)// false for vertical;true for h
 	SetPosition(this->globalPosition.x, this->globalPosition.y);
 }
 
+
+
 void Actor::Die()
 {
 

@@ -31,7 +31,12 @@ public:
 	void Update();
 	void Draw();
 	void PlayerControls();
+	void ChoosePlayerDrawType(bool walkingForward);
+	void PlayerAnim(int direction);
 	float lastspeed = player_Zata.actorSpeed;
+	bool forward = false;
+	int direction = 0;
+	
 	class Timer
 	{
 	public:

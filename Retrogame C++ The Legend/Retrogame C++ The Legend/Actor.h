@@ -13,6 +13,14 @@ public:
 	void Move(float DeltaTime, bool Vertical);
 	virtual void Die();
 	virtual void ActorBehaviour();
+	struct animationRange 
+	{
+		int aniStart;
+		int aniEnd;
+	};
+
+
+
 	Actor();
 	~Actor();
 };
