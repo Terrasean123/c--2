@@ -16,10 +16,6 @@ public:
 	animationRange rightAnim;
 	animationRange leftAnim;
 
-
-
 	float SwordRotation(int rotationIterator);
-
-
 };
 

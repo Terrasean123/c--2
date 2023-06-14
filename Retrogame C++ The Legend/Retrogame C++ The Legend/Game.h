@@ -36,7 +36,11 @@ public:
 	float lastspeed = player_Zata.actorSpeed;
 	bool forward = false;
 	int direction = 0;
-	
+	int once1 = 0;
+	int once2 = 0;
+	int once3 = 0;
+	int once4 = 0;
+
 	class Timer
 	{
 	public:
@@ -48,7 +52,7 @@ public:
 		int previousCount = 0;
 		int fps = 1;
 		int frames = 0;
-		float seconds;
+		float seconds = 0;
 		Timer();
 		void Restart();
 		float GetDeltaTime();

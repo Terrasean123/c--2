@@ -1,0 +1,1 @@
+aniiterator is constantly being set  before having the calculations made

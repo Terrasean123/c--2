@@ -8,18 +8,18 @@ class Actor :public SceneObject
 {
 public:
 	SpriteObject sprite;
-	float actorSpeed = 0;
-	float actorMaxSpeed;
+	float actorSpeed = 1;
+	float actorAnimSpeed = 1;
+	float actorMaxSpeed = 5;
 	void Move(float DeltaTime, bool Vertical);
 	virtual void Die();
 	virtual void ActorBehaviour();
+
 	struct animationRange 
 	{
 		int aniStart;
 		int aniEnd;
 	};
-
-
 
 	Actor();
 	~Actor();
