@@ -7,7 +7,6 @@ Game::Game()
 {
 	player_Zata.sprite.Load("../../SpriteFolder/ ZataSprite-0001-sheet.png");
 
-	//	player_Zata.sprite.Load("../../SpriteFolder/ ZataSprite-0001-sheet.png");
 }
 
 Game::~Game()
@@ -22,8 +21,8 @@ void  Game::debug(bool debugging)
 
 	if (debugging == true)
 	{
-
-		//std::cout << "seconds:" << gameTime.GetDeltaTime() << std::endl;
+		//gameTime.seconds += gameTime.GetDeltaTime();
+		//std::cout << "seconds:" << gameTime.sec << std::endl;
 		if (lastspeed < player_Zata.actorSpeed)
 		{
 			lastspeed = player_Zata.actorSpeed;
@@ -35,17 +34,28 @@ void  Game::debug(bool debugging)
 			lastspeed = player_Zata.actorSpeed;
 			cout << "player Actor speed :" << lastspeed << endl;
 		}
-		cout << "animation number :" << player_Zata.sprite.aniIterator << endl;
+		if ((int)(gameTime.sec - remainder(gameTime.sec, 1)) % 2 == 0)
+		{
+			//cout << "remainder :" << gameTime.sec/ 2 + remainder(gameTime.sec, 2) << endl;
+			cout << "remainder :" << gameTime.sec - remainder(gameTime.sec, 1) << endl;
+
+		}
+		//cout << "animation number :" << player_Zata.sprite.aniIterator << endl;
 	}
 }
 
 void Game::Update()
 {
+	gameTime.sec += gameTime.GetDeltaTime();
 	PlayerControls();
 	GameMap.ManageTiles();
 	player_Zata.Update(0);
+
+
+	enemy1.FollowBehaviour(ConvertGlmVec(player_Zata.globalPosition), gameTime.GetDeltaTime());
+
+
 	debug(true);
-	player_Zata.sprite.aniIterator;
 
 }
 
@@ -179,23 +189,32 @@ void Game::PlayerControls()
 
 void Game::PlayerAnim(int direction)
 {
+
 	if (direction == 0)
 	{
-		if (once1 != 1)
+
+		//	if ((int)(gameTime.sec - remainder(gameTime.sec, 1)) % 5 != 0)
 		{
-			player_Zata.sprite.aniIterator = player_Zata.forwardAnim.aniStart;
-			once1++;
+			if (once1 != 1)
+			{
+				player_Zata.sprite.aniIterator = player_Zata.forwardAnim.aniStart;
+				once1++;
+			}
+
+			if (player_Zata.sprite.aniIterator < player_Zata.forwardAnim.aniEnd - 1)
+			{
+				player_Zata.sprite.aniIterator++;
+			}
+			else
+			{
+				player_Zata.sprite.aniIterator = player_Zata.forwardAnim.aniStart;
+				once1 = 0;
+			}
+
+
 		}
 
-		if (player_Zata.sprite.aniIterator < player_Zata.forwardAnim.aniEnd-1)
-		{
-			player_Zata.sprite.aniIterator += (player_Zata.actorAnimSpeed /** gameTime.GetDeltaTime()*/);
-		}
-		else
-		{
-			player_Zata.sprite.aniIterator = player_Zata.forwardAnim.aniStart;
-			once1 = 0;
-		}
+
 	}
 
 	if (direction == 1)
@@ -206,9 +225,9 @@ void Game::PlayerAnim(int direction)
 			once2++;
 		}
 
-		if (player_Zata.sprite.aniIterator < player_Zata.leftAnim.aniEnd-1)
+		if (player_Zata.sprite.aniIterator < player_Zata.leftAnim.aniEnd - 1)
 		{
-			player_Zata.sprite.aniIterator += (player_Zata.actorAnimSpeed /** gameTime.GetDeltaTime()*/);
+			player_Zata.sprite.aniIterator++;
 		}
 		else
 		{
@@ -224,9 +243,9 @@ void Game::PlayerAnim(int direction)
 			player_Zata.sprite.aniIterator = player_Zata.rightAnim.aniStart;
 			once3++;
 		}
-		if (player_Zata.sprite.aniIterator < player_Zata.rightAnim.aniEnd-1)
+		if (player_Zata.sprite.aniIterator < player_Zata.rightAnim.aniEnd - 1)
 		{
-			player_Zata.sprite.aniIterator += (player_Zata.actorAnimSpeed /** gameTime.GetDeltaTime()*/);
+			player_Zata.sprite.aniIterator++;
 		}
 		else
 		{
@@ -243,9 +262,9 @@ void Game::PlayerAnim(int direction)
 			once4++;
 		}
 
-		if (player_Zata.sprite.aniIterator < player_Zata.backAnim.aniEnd-1)
+		if (player_Zata.sprite.aniIterator < player_Zata.backAnim.aniEnd - 1)
 		{
-			player_Zata.sprite.aniIterator += (player_Zata.actorAnimSpeed/* * gameTime.GetDeltaTime()*/);
+			player_Zata.sprite.aniIterator++;
 		}
 		else
 		{
@@ -262,6 +281,19 @@ void Game::PlayerAnim(int direction)
 }
 
 
+void Game::Win()
+{
+
+
+
+}
+void Game::GameUi()
+{
+	string playerHealth;
+	playerHealth = "health:" + player_Zata.Health;
+	DrawText(playerHealth.c_str(), 0, 200, 100, RED);
+}
+
 void Game::Draw()
 {
 	BeginDrawing();
@@ -269,7 +301,8 @@ void Game::Draw()
 	GameMap.CreateMap();
 	//player_Zata.swordSprite.Draw();
 	ChoosePlayerDrawType(forward);
-
+	enemy1.Draw();
+	GameUi();
 
 	//DrawRectangle(player_Zata.globalPosition.x, player_Zata.globalPosition.y ,20,20 ,RED);
 //	DrawRectangle(player_Zata.swordObject.globalPosition.x, player_Zata.swordObject.globalPosition.y, 20, 20, RED);

@@ -8,7 +8,8 @@ class Player:public Actor
 public:
 	Player();
 	~Player();
-	
+	int Health = 100;
+
 	SceneObject swordObject;
 	SpriteObject swordSprite;
 	animationRange forwardAnim;

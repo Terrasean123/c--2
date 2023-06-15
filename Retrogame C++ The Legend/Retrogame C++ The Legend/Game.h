@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "SceneObject.h"
 #include "SpriteObject.h"
+#include "Enemies.h"
 #include "Actor.h"
 #include "Map.h"
 #include <chrono>
@@ -33,6 +34,16 @@ public:
 	void PlayerControls();
 	void ChoosePlayerDrawType(bool walkingForward);
 	void PlayerAnim(int direction);
+	void Win();
+	void spawnEnemies();
+	int enemyNumber;
+
+	void GameUi();
+
+
+	Enemies enemy1; Enemies enemy2; Enemies enemy3; Enemies enemy4; Enemies enemy5; Enemies enemy6;
+	
+
 	float lastspeed = player_Zata.actorSpeed;
 	bool forward = false;
 	int direction = 0;
@@ -44,7 +55,7 @@ public:
 	class Timer
 	{
 	public:
-		
+
 		time_t currentTime = 0;
 		time_t lastTime = time(NULL);
 		float m_timer = 0;
@@ -52,7 +63,7 @@ public:
 		int previousCount = 0;
 		int fps = 1;
 		int frames = 0;
-		float seconds = 0;
+		double sec = 0;
 		Timer();
 		void Restart();
 		float GetDeltaTime();

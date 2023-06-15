@@ -11,6 +11,8 @@ public:
 	float actorSpeed = 1;
 	float actorAnimSpeed = 1;
 	float actorMaxSpeed = 5;
+	void AIMove(float DeltaTime, Vector2 locVec);
+
 	void Move(float DeltaTime, bool Vertical);
 	virtual void Die();
 	virtual void ActorBehaviour();
