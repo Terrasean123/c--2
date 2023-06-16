@@ -16,20 +16,29 @@ void SpriteObject::Load(std::string filename)
 
 void SpriteObject::OnDraw()
 {
-	if (nonActor == true)
+	if (animated == false)
 	{
 		DrawTextureEx(texture, ConvertGlmVec(globalPosition), this->rotation, spriteScale, Tint);
 	}
 	else
 	{
+		/*Rectangle spriteFrame = Rectangle();
+		spriteFrame.width = individualSpriteWidth;
+		spriteFrame.height = individualSpriteHeight;
+		spriteFrame.y = individualSpriteHeight * aniIterator;
+		Rectangle DestinationRect = Rectangle();
+		DestinationRect.height = (spriteFrame.height)*spriteScale;
+		DestinationRect.width = (spriteFrame.width)*spriteScale;*/
+
 		Rectangle spriteFrame = Rectangle();
 		spriteFrame.width = individualSpriteWidth;
 		spriteFrame.height = individualSpriteHeight;
 		spriteFrame.y = individualSpriteHeight * aniIterator;
 		Rectangle DestinationRect = Rectangle();
-		DestinationRect.height = spriteFrame.height*spriteScale;
-		DestinationRect.width = spriteFrame.width*spriteScale;
+		DestinationRect.height= individualSpriteWidth*spriteScale ; 
+		DestinationRect.width = individualSpriteHeight* spriteScale ;
 
-		DrawTexturePro(texture, spriteFrame, DestinationRect, ConvertGlmVec(-globalPosition), rotation, Tint);
+		//DrawTexturePro(texture, spriteFrame, DestinationRect, ConvertGlmVec(-globalPosition), rotation, Tint);
+		DrawTexturePro(texture, spriteFrame, DestinationRect, Vector2{,1}, rotation, Tint);
 	}
 }

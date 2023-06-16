@@ -21,25 +21,30 @@ void  Game::debug(bool debugging)
 
 	if (debugging == true)
 	{
+
+		cout << "SwordX:" << player_Zata.swordSprite.localPosition.x << endl;
+		cout << "SwordY:" << player_Zata.swordSprite.localPosition.y << endl;
+
+		
 		//gameTime.seconds += gameTime.GetDeltaTime();
 		//std::cout << "seconds:" << gameTime.sec << std::endl;
-		if (lastspeed < player_Zata.actorSpeed)
-		{
-			lastspeed = player_Zata.actorSpeed;
-			cout << "player Actor speed :" << lastspeed << endl;
+		//if (lastspeed < player_Zata.actorSpeed)
+		//{
+		//	lastspeed = player_Zata.actorSpeed;
+		//	cout << "player Actor speed :" << lastspeed << endl;
 
-		}
-		if (lastspeed > player_Zata.actorSpeed)
-		{
-			lastspeed = player_Zata.actorSpeed;
-			cout << "player Actor speed :" << lastspeed << endl;
-		}
-		if ((int)(gameTime.sec - remainder(gameTime.sec, 1)) % 2 == 0)
-		{
-			//cout << "remainder :" << gameTime.sec/ 2 + remainder(gameTime.sec, 2) << endl;
-			cout << "remainder :" << gameTime.sec - remainder(gameTime.sec, 1) << endl;
+		//}
+		//if (lastspeed > player_Zata.actorSpeed)
+		//{
+		//	lastspeed = player_Zata.actorSpeed;
+		//	cout << "player Actor speed :" << lastspeed << endl;
+		//}
+		//if ((int)(gameTime.sec - remainder(gameTime.sec, 1)) % 2 == 0)
+		//{
+		//	//cout << "remainder :" << gameTime.sec/ 2 + remainder(gameTime.sec, 2) << endl;
+		//	cout << "remainder :" << gameTime.sec - remainder(gameTime.sec, 1) << endl;
 
-		}
+		//}
 		//cout << "animation number :" << player_Zata.sprite.aniIterator << endl;
 	}
 }
@@ -47,14 +52,15 @@ void  Game::debug(bool debugging)
 void Game::Update()
 {
 	gameTime.sec += gameTime.GetDeltaTime();
-	PlayerControls();
+	if (player_Zata.Alive == true)
+	{
+		PlayerControls();
+	}
 	GameMap.ManageTiles();
 	player_Zata.Update(0);
-
-
-	enemy1.FollowBehaviour(ConvertGlmVec(player_Zata.globalPosition), gameTime.GetDeltaTime());
-
-
+	playerStateMonitor();
+	UpdateActorCollsionBoxes();
+	//enemy1.FollowBehaviour(ConvertGlmVec(player_Zata.globalPosition), gameTime.GetDeltaTime());
 	debug(true);
 
 }
@@ -90,13 +96,67 @@ void Game::PlayerControls()
 		}
 	}
 
-	if (IsKeyReleased(MOUSE_BUTTON_LEFT))
+	if (IsKeyDown(KEY_M))
 	{
+		player_Zata.swordSprite.animated = false;
+		/*if (lastrot < player_Zata.swordObject.rotation)
+		{
+			lastrot = player_Zata.swordObject.rotation;
+			cout << "sword rotation:" << player_Zata.swordObject.rotation << endl;
 
-
-
-
+		}*/
 	}
+
+
+	if (IsKeyDown(KEY_N))
+	{
+		player_Zata.swordSprite.animated = true;
+		/*if (lastrot < player_Zata.swordObject.rotation)
+		{
+			lastrot = player_Zata.swordObject.rotation;
+			cout << "sword rotation:" << player_Zata.swordObject.rotation << endl;
+
+		}*/
+	}
+
+
+
+	if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+	{
+		slash = true;
+	}
+
+	if (IsMouseButtonUp(MOUSE_BUTTON_LEFT))
+	{
+		
+		slash = false;
+		if (direction == 2)
+		{
+
+			player_Zata.swordSprite.aniIterator = player_Zata.leftSwordAnim.aniStart;
+		}
+
+		if (direction == 1)
+		{
+			
+			player_Zata.swordSprite.aniIterator = player_Zata.rightSwordAnim.aniStart;
+		}
+
+		if (direction == 2)
+		{
+
+			player_Zata.swordSprite.aniIterator = player_Zata.leftSwordAnim.aniStart;
+		}
+
+		if ((direction == 1)== false && (direction ==2) == false)
+		{
+
+			player_Zata.swordSprite.aniIterator = player_Zata.rightSwordAnim.aniStart;
+		}
+	}
+
+
+	
 
 	if (IsKeyDown(KEY_K))
 	{
@@ -117,7 +177,7 @@ void Game::PlayerControls()
 		direction = 0;
 		forward = true;
 		PlayerAnim(direction);
-		player_Zata.swordSprite.rotation = player_Zata.SwordRotation(360);
+		//player_Zata.swordSprite.rotation = player_Zata.SwordRotation(360);
 		player_Zata.Move(-gameTime.GetDeltaTime(), true);
 	}
 
@@ -126,7 +186,7 @@ void Game::PlayerControls()
 		direction = 3;
 		forward = false;
 		PlayerAnim(direction);
-		player_Zata.swordSprite.rotation = player_Zata.SwordRotation(180);
+		//	player_Zata.swordSprite.rotation = player_Zata.SwordRotation(180);
 		player_Zata.Move(gameTime.GetDeltaTime(), true);
 	}
 
@@ -136,7 +196,7 @@ void Game::PlayerControls()
 		direction = 1;
 		forward = false;
 		PlayerAnim(direction);
-		player_Zata.swordSprite.rotation = player_Zata.SwordRotation(270);
+		//player_Zata.swordSprite.rotation = player_Zata.SwordRotation(270);
 		player_Zata.Move(-gameTime.GetDeltaTime(), false);
 	}
 
@@ -146,7 +206,7 @@ void Game::PlayerControls()
 		direction = 2;
 		forward = false;
 		PlayerAnim(direction);
-		player_Zata.swordSprite.rotation = player_Zata.SwordRotation(90);
+		//	player_Zata.swordSprite.rotation = player_Zata.SwordRotation(90);
 		player_Zata.Move(gameTime.GetDeltaTime(), false);
 	}
 
@@ -183,7 +243,39 @@ void Game::PlayerControls()
 
 	}
 
+	SwordAnim(direction, slash);
 
+}
+
+void Game::SwordAnim(int Direction, bool slash)
+{
+	if (slash == true)
+	{
+		if (Direction == 2)
+		{
+
+			if (player_Zata.swordSprite.aniIterator != player_Zata.leftSwordAnim.aniEnd)
+			{
+				player_Zata.swordSprite.aniIterator += 1;
+			}
+			else
+			{
+				player_Zata.swordSprite.aniIterator = player_Zata.leftSwordAnim.aniStart;
+			}
+		}
+		if (Direction == 1)
+		{
+
+			if (player_Zata.swordSprite.aniIterator != player_Zata.rightSwordAnim.aniEnd)
+			{
+				player_Zata.swordSprite.aniIterator += 1;
+			}
+			else
+			{
+				player_Zata.swordSprite.aniIterator = player_Zata.rightSwordAnim.aniStart;
+			}
+		}
+	}
 }
 
 
@@ -287,11 +379,39 @@ void Game::Win()
 
 
 }
+
+void Game::UpdateActorCollsionBoxes()
+{
+	player_Zata.UpdateCollsionBox();
+	enemy1.UpdateCollsionBox();
+}
+
+
 void Game::GameUi()
 {
-	string playerHealth;
-	playerHealth = "health:" + player_Zata.Health;
-	DrawText(playerHealth.c_str(), 0, 200, 100, RED);
+	string playerHealth = "health:" + to_string(player_Zata.health);
+	DrawText(playerHealth.c_str(), 0, 200, 20, RED);
+}
+
+void Game::playerStateMonitor()
+{
+	if (player_Zata.health < 0)
+	{
+		player_Zata.health = 0;
+		player_Zata.Die();
+	}
+
+}
+
+void Game::PlayerEnemyCollision()
+{
+	DrawBoundingBox(player_Zata.actorCollisionBox, RED);
+	DrawBoundingBox(enemy1.actorCollisionBox, RED);
+
+	if (CheckCollisionBoxes(player_Zata.actorCollisionBox, enemy1.actorCollisionBox))
+	{
+		player_Zata.health--;
+	}
 }
 
 void Game::Draw()
@@ -299,17 +419,15 @@ void Game::Draw()
 	BeginDrawing();
 	ClearBackground(RAYWHITE);
 	GameMap.CreateMap();
-	//player_Zata.swordSprite.Draw();
 	ChoosePlayerDrawType(forward);
+	PlayerEnemyCollision();
 	enemy1.Draw();
 	GameUi();
+	//DrawRectangle(player_Zata.swordObject.globalPosition.x, player_Zata.swordObject.globalPosition.y, 50, 50, RED);
+	//DrawRectangle(player_Zata.swordSprite.globalPosition.x, player_Zata.swordSprite.globalPosition.y, 50, 50, RED);
 
-	//DrawRectangle(player_Zata.globalPosition.x, player_Zata.globalPosition.y ,20,20 ,RED);
-//	DrawRectangle(player_Zata.swordObject.globalPosition.x, player_Zata.swordObject.globalPosition.y, 20, 20, RED);
-//	DrawRectangle(player_Zata.swordSprite.globalPosition.x, player_Zata.swordSprite.globalPosition.y, 20, 20, RED);
+
 	EndDrawing();
-
-
 }
 
 Game::Timer::Timer()
@@ -317,9 +435,8 @@ Game::Timer::Timer()
 
 
 }
-void Game::Timer::Stopwatch()
+Game::Timer::~Timer()
 {
-
 
 
 }
@@ -330,12 +447,5 @@ float Game::Timer::GetDeltaTime()
 	return deltaTime;
 }
 
-float Game::Timer::Seconds()
-{
-	high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
-	high_resolution_clock::time_point end = std::chrono::high_resolution_clock::now();
 
-	float dur_seconds = std::chrono::duration<float>(end - start).count();
 
-	return dur_seconds;
-}

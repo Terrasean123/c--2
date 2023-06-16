@@ -14,7 +14,7 @@ public:
 	float individualSpriteHeight = 0;
 	float individualSpriteWidth = 0;
 	float aniIterator = 3;
-	bool nonActor= true;
+	bool animated = false;
 	Color Tint = WHITE;
 
 

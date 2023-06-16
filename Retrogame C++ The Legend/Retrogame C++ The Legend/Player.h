@@ -8,15 +8,21 @@ class Player:public Actor
 public:
 	Player();
 	~Player();
-	int Health = 100;
-
+	int health = 100;
+	
 	SceneObject swordObject;
 	SpriteObject swordSprite;
+
 	animationRange forwardAnim;
 	animationRange backAnim;
 	animationRange rightAnim;
 	animationRange leftAnim;
 
+	animationRange leftSwordAnim;
+
+	animationRange rightSwordAnim;
+
 	float SwordRotation(int rotationIterator);
+	void Die()override;
 };
 

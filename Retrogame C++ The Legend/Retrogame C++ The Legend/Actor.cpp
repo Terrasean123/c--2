@@ -2,7 +2,14 @@
 
 Actor::Actor()
 {
-
+	actorCollisionBox.min.x = 0 + globalPosition.x;
+	actorCollisionBox.min.y = 0 + globalPosition.y;
+	actorCollisionBox.max.x = (sprite.individualSpriteWidth) * sprite.spriteScale + globalPosition.x;
+	actorCollisionBox.max.y = (sprite.individualSpriteHeight) * sprite.spriteScale + globalPosition.y;
+	actorCollisionBox.min.z = 0;
+	actorCollisionBox.min.z = 0;
+	actorCollisionBox.max.z = 0;
+	actorCollisionBox.max.z = 0;
 }
 
 
@@ -10,6 +17,21 @@ Actor::~Actor()
 {
 
 }
+
+
+void Actor::UpdateCollsionBox()
+{
+	actorCollisionBox.min.x = 0 + globalPosition.x;
+	actorCollisionBox.min.y = 0 + globalPosition.y;
+	actorCollisionBox.max.x = (sprite.individualSpriteWidth) * sprite.spriteScale + globalPosition.x;
+	actorCollisionBox.max.y = (sprite.individualSpriteHeight) * sprite.spriteScale + globalPosition.y;
+	actorCollisionBox.min.z = 0;
+	actorCollisionBox.min.z = 0;
+	actorCollisionBox.max.z = 0;
+	actorCollisionBox.max.z = 0;
+
+}
+
 
 void Actor::Move(float deltaTime, bool Vertical)// false for vertical;true for horizontal
 {

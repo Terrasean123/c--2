@@ -7,8 +7,8 @@ Enemies::Enemies()
 	sprite.spriteScale = 5;
 	AddChild(&sprite);
 	SetPosition(-sprite.GetWidth() / 2.0f, sprite.GetWidth() / 2.0f);
-	SetPosition(GetScreenWidth() / 2, GetScreenHeight() / 2);
-	sprite.nonActor = false;
+	SetPosition(GetScreenWidth() / 2+200, GetScreenHeight() / 2);
+	sprite.animated = false;
 	sprite.individualSpriteHeight = 20;
 	sprite.individualSpriteWidth = 20;
 	sprite.spriteScale = 5;
@@ -23,10 +23,14 @@ void Enemies::ActorBehaviour()
 
 }
 
+void Enemies::Die()
+{
+	sprite = SpriteObject();
+	Alive = false;
+}
 void Enemies::FollowBehaviour(Vector2 playerVec,float deltaTime)
 {
 	AIMove(deltaTime, playerVec);
-	
 }
 
 Enemies::~Enemies()

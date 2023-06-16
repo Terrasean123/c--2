@@ -36,8 +36,14 @@ public:
 	void PlayerAnim(int direction);
 	void Win();
 	void spawnEnemies();
-	int enemyNumber;
+	void PlayerEnemyCollision();
+	void UpdateActorCollsionBoxes();
+	void Lose();
+	void playerStateMonitor();
+	void SwordAnim(int direction,bool slash);
 
+	int enemyNumber;
+	bool slash= false;
 	void GameUi();
 
 
@@ -65,10 +71,10 @@ public:
 		int frames = 0;
 		double sec = 0;
 		Timer();
-		void Restart();
 		float GetDeltaTime();
-		float Seconds();
-		void Stopwatch();
+		~Timer();
+
+		
 
 	};
 
