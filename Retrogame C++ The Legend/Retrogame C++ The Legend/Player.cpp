@@ -28,9 +28,9 @@ Player::Player()
 	AddChild(&swordObject);
 	swordSprite.individualSpriteHeight = 41;
 	swordSprite.individualSpriteWidth = 41;
-	swordSprite.spriteScale = 3;
+	swordSprite.spriteScale = 3.5;
 	swordObject.AddChild(&swordSprite);
-	swordSprite.SetPosition(50,0);
+	swordSprite.SetPosition(0,0);
 
 	swordSprite.animated = true;
 	swordSprite.aniIterator = 0;
@@ -51,27 +51,27 @@ float Player::SwordRotation(int rotation)
 		//right
 		rot = 90;
 
-		swordSprite.SetPosition(50, 0);
+		swordSprite.SetPosition(100, 40);
 		break;
 
 	case 180:
 
 		//down
 		rot = 180;
-		swordSprite.SetPosition(0, 0);
+		swordSprite.SetPosition(110, 125);
 		break;
 
 	case 270:
 		//left
 		rot = 270;
-		swordSprite.SetPosition(-300, 0);
+		swordSprite.SetPosition(0,170);
 
 		break;
 
 	case 360:
 		//up
 		rot = 360;
-		swordSprite.SetPosition(0, 0);
+		swordSprite.SetPosition(-80, -50);
 		break;
 
 	}

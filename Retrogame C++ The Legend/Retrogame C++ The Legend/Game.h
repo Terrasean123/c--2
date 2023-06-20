@@ -62,8 +62,8 @@ public:
 	{
 	public:
 
-		time_t currentTime = 0;
-		time_t lastTime = time(NULL);
+		//time_t currentTime = 0;
+		//ime_t lastTime = time(NULL);
 		float m_timer = 0;
 		float deltaTime = 0.0005f;
 		int previousCount = 0;

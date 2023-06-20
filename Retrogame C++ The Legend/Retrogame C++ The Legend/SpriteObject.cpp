@@ -22,23 +22,18 @@ void SpriteObject::OnDraw()
 	}
 	else
 	{
-		/*Rectangle spriteFrame = Rectangle();
-		spriteFrame.width = individualSpriteWidth;
-		spriteFrame.height = individualSpriteHeight;
-		spriteFrame.y = individualSpriteHeight * aniIterator;
-		Rectangle DestinationRect = Rectangle();
-		DestinationRect.height = (spriteFrame.height)*spriteScale;
-		DestinationRect.width = (spriteFrame.width)*spriteScale;*/
-
 		Rectangle spriteFrame = Rectangle();
 		spriteFrame.width = individualSpriteWidth;
 		spriteFrame.height = individualSpriteHeight;
 		spriteFrame.y = individualSpriteHeight * aniIterator;
+		spriteFrame.x = 0;
 		Rectangle DestinationRect = Rectangle();
-		DestinationRect.height= individualSpriteWidth*spriteScale ; 
-		DestinationRect.width = individualSpriteHeight* spriteScale ;
+		DestinationRect.height = individualSpriteHeight * spriteScale;
+		DestinationRect.width = individualSpriteWidth * spriteScale;
+		DestinationRect.x = globalPosition.x;
+		DestinationRect.y = globalPosition.y;
 
-		//DrawTexturePro(texture, spriteFrame, DestinationRect, ConvertGlmVec(-globalPosition), rotation, Tint);
-		DrawTexturePro(texture, spriteFrame, DestinationRect, Vector2{,1}, rotation, Tint);
+
+		DrawTexturePro(texture, spriteFrame, DestinationRect, Vector2{ 0,0 }, rotation, Tint);
 	}
 }

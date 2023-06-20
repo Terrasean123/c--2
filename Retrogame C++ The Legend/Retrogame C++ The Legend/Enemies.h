@@ -7,7 +7,7 @@ public:
 
 	Enemies();
 	~Enemies();
-	int Health = 100;
+	int health = 100;
 	void Die()override;
  void ActorBehaviour() override;
 
