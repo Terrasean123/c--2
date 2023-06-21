@@ -42,6 +42,17 @@ void Map::CreateMap()
 
 }
 
+void Map::DrawMap()
+{
+
+	for (int i = 0; i < tileMap.size() - 1; i++)
+	{
+		Vector2 vec2 = Vector2{ tileMap[i]->globalPosition.x,tileMap[i]->globalPosition.y};
+		DrawTextureEx(tileMap[i]->currentSprite->texture, vec2, 0, tileScale, WHITE);
+	}
+}
+
+
 void Map::ManageTiles()
 {
 
@@ -53,7 +64,7 @@ void Map::ManageTiles()
 	{
 		int rowIndex = mousePos.y / (tileWidth * tileScale);
 		int colIndex = mousePos.x / (tileHeight * tileScale);
-		std::cout <<"Row:" << rowIndex << std::endl; std::cout << "Col:" << colIndex << std::endl;
+		std::cout << "Row:" << rowIndex << std::endl; std::cout << "Col:" << colIndex << std::endl;
 
 		int tileIndex = rowIndex * heightNumber + colIndex;
 		std::cout << tileIndex << std::endl;

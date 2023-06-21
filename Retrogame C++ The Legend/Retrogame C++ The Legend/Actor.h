@@ -11,8 +11,14 @@ public:
 	float actorSpeed = 100;
 	float actorAnimSpeed = 1;
 	float actorMaxSpeed = 5;
-	bool Alive = true;
+	bool alive = true;
 	BoundingBox actorCollisionBox;
+	int max_Xextender = 0;
+	int max_Yextender = 0;
+	int min_Xextender = 0;
+	int min_Yextender = 0;
+
+
 	void AIMove(float DeltaTime, Vector2 locVec);
 	void UpdateCollsionBox();
 

@@ -12,7 +12,7 @@ Enemies::Enemies()
 	sprite.individualSpriteHeight = 20;
 	sprite.individualSpriteWidth = 20;
 	sprite.spriteScale = 5;
-	actorSpeed = 150;
+	actorSpeed = 120;
 	actorMaxSpeed = 200;
 }
 
@@ -26,7 +26,7 @@ void Enemies::ActorBehaviour()
 void Enemies::Die()
 {
 	sprite = SpriteObject();
-	Alive = false;
+	alive = false;
 }
 void Enemies::FollowBehaviour(Vector2 playerVec,float deltaTime)
 {

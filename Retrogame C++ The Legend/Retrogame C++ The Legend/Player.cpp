@@ -51,7 +51,7 @@ float Player::SwordRotation(int rotation)
 		//right
 		rot = 90;
 
-		swordSprite.SetPosition(100, 40);
+		swordSprite.SetPosition(100, -50);
 		break;
 
 	case 180:
@@ -64,7 +64,7 @@ float Player::SwordRotation(int rotation)
 	case 270:
 		//left
 		rot = 270;
-		swordSprite.SetPosition(0,170);
+		swordSprite.SetPosition(0,100);
 
 		break;
 
@@ -85,7 +85,7 @@ void Player::Die()
 {
 	swordSprite = SpriteObject();
 	sprite = SpriteObject();
-	Alive = false;
+	alive = false;
 }
 
 Player::~Player()
