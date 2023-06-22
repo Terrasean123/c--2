@@ -11,7 +11,7 @@ public:
 	Map* mapRef;
 	SpriteObject* currentSprite;
 	//Tile();
-	SpriteObject& Chooser();
+	SpriteObject& Chooser(int spriteindex);
 	int spriteIndex = 1;
 	void UpdateTileSprite();
 	Tile(Map* mapRef);

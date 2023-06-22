@@ -8,13 +8,13 @@
 Tile::Tile(Map* mapRef)
 {
 	this->mapRef = mapRef;
-	currentSprite = &Chooser();
+	currentSprite = &Chooser(spriteIndex);
 	this->AddChild(currentSprite);
 
 }
 
-// might be worth making sprite index a parameter
-SpriteObject& Tile::Chooser()
+//  
+SpriteObject& Tile::Chooser(int spriteIndex)
 {
 	switch (spriteIndex)
 	{
@@ -46,7 +46,7 @@ SpriteObject& Tile::Chooser()
 // REQUIRES SPRITE INDEX INVOLVEMENT
 void Tile::UpdateTileSprite()
 {
-	currentSprite = &Chooser();
+	currentSprite = &Chooser(spriteIndex);
 }
 
 

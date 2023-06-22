@@ -50,7 +50,7 @@ public:
 	Enemies enemy1; Enemies enemy2; Enemies enemy3;
 
 
-
+	bool creatorMode =false;
 	bool slash = false;
 	bool gameOn = true;
 	bool gameOver = false;

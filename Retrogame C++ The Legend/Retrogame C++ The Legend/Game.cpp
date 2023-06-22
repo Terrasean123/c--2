@@ -36,7 +36,10 @@ void  Game::debug(bool debugging)
 	if (debugging == true)
 	{
 
-		std::cout << player_Zata.alive << endl;
+
+		
+
+		//std::cout << player_Zata.alive << endl;
 		//	std::cout << enemy1.health << endl;
 
 			//gameTime.seconds += gameTime.GetDeltaTime();
@@ -72,15 +75,14 @@ void Game::Update()
 		{
 			PlayerControls();
 		}
-		GameMap.ManageTiles();
+		GameMap.ManageTiles(creatorMode);
 		player_Zata.Update(0);
 		playerStateMonitor();
 		EnemyStateMonitor();
 		UpdateActorCollsionBoxes();
-		enemy1.FollowBehaviour(ConvertGlmVec(player_Zata.globalPosition), gameTime.GetDeltaTime());
-		enemy2.FollowBehaviour(ConvertGlmVec(player_Zata.globalPosition), gameTime.GetDeltaTime());
-
-		enemy3.FollowBehaviour(ConvertGlmVec(player_Zata.globalPosition), gameTime.GetDeltaTime());
+		//enemy1.FollowBehaviour(ConvertGlmVec(player_Zata.globalPosition), gameTime.GetDeltaTime());
+	//	enemy2.FollowBehaviour(ConvertGlmVec(player_Zata.globalPosition), gameTime.GetDeltaTime());
+	//	enemy3.FollowBehaviour(ConvertGlmVec(player_Zata.globalPosition), gameTime.GetDeltaTime());
 
 
 
@@ -108,44 +110,23 @@ void Game::ChoosePlayerDrawType(bool walkingForward)
 
 void Game::PlayerControls()
 {
-	gameTime.m_timer += gameTime.GetDeltaTime();
+	
 
 	float lastrot = 0;
-	if (IsKeyDown(KEY_L))
+
+
+
+	//for level Creation
+	if(IsKeyReleased(KEY_C) && creatorMode== false)
 	{
-		player_Zata.swordSprite.rotation++;
-		if (lastrot < player_Zata.swordSprite.rotation)
-		{
-			lastrot = player_Zata.swordSprite.rotation;
-			cout << "sword rotation:" << player_Zata.swordSprite.rotation << endl;
-
-		}
+		creatorMode= true;
+	
 	}
-
-	if (IsKeyDown(KEY_M))
+	else if(creatorMode == true && IsKeyReleased(KEY_C))
 	{
-		player_Zata.swordSprite.animated = false;
-		/*if (lastrot < player_Zata.swordObject.rotation)
-		{
-			lastrot = player_Zata.swordObject.rotation;
-			cout << "sword rotation:" << player_Zata.swordObject.rotation << endl;
-
-		}*/
+		creatorMode = false;
 	}
-
-
-	if (IsKeyDown(KEY_N))
-	{
-		player_Zata.swordSprite.animated = true;
-		/*if (lastrot < player_Zata.swordObject.rotation)
-		{
-			lastrot = player_Zata.swordObject.rotation;
-			cout << "sword rotation:" << player_Zata.swordObject.rotation << endl;
-
-		}*/
-	}
-
-
+	
 
 	if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 	{
@@ -615,9 +596,6 @@ void Game::Draw()
 	BeginDrawing();
 	ClearBackground(RAYWHITE);
 
-
-
-	
 	GameMap.DrawMap();
 	ChoosePlayerDrawType(forward);
 	PlayerEnemyCollision();
