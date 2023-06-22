@@ -47,12 +47,6 @@ void Map::CreateMap()
 			Tile& tile = tileMap.back();
 			tile.globalPosition.x = xpos;
 			tile.globalPosition.y = ypos;
-
-			std::cout << tileMap.max_size() << std::endl;
-			std::cout << tileMap.size() << std::endl;
-
-			//Vector2 vec2 = Vector2{ tile.globalPosition.x,tile.globalPosition.y };
-			//DrawTextureEx(tile.currentSprite->texture, vec2, 0, tileScale, WHITE);
 		}
 	}
 

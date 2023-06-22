@@ -30,12 +30,12 @@ Player::Player()
 	swordSprite.individualSpriteWidth = 41;
 	swordSprite.spriteScale = 3.5;
 	swordObject.AddChild(&swordSprite);
-	swordSprite.SetPosition(0,0);
+	swordSprite.SetPosition(0, 0);
 
 	swordSprite.animated = true;
 	swordSprite.aniIterator = 0;
 	UpdateTransform();
-	 swordSprite.rotation = SwordRotation(1);
+	swordSprite.rotation = SwordRotation(1);
 	//swordSlashSprite.Load("../../SpriteFolder/SwordSlashSpriteSheet-0001.png");
 
 
@@ -49,29 +49,28 @@ float Player::SwordRotation(int rotation)
 	{
 	case 90:
 		//right
-		rot = 90;
 
-		swordSprite.SetPosition(100, -50);
+		swordSprite.SetPosition(-60, 0);
 		break;
 
 	case 180:
 
 		//down
 		rot = 180;
-		swordSprite.SetPosition(110, 125);
+		swordSprite.SetPosition(100, 150);
 		break;
 
 	case 270:
 		//left
-		rot = 270;
-		swordSprite.SetPosition(0,100);
+		//rot = 270;
+		swordSprite.SetPosition(0, 0);
 
 		break;
 
 	case 360:
 		//up
-		rot = 360;
-		swordSprite.SetPosition(-80, -50);
+		//rot = 360;
+		swordSprite.SetPosition(-10, -60);
 		break;
 
 	}

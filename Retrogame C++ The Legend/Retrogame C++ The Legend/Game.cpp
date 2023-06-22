@@ -18,7 +18,7 @@ Game::~Game()
 
 
 }
-//
+
 //void Game::spawnEnemies()
 //{
 //	for (int i = 0; i < 10; i++)
@@ -36,32 +36,6 @@ void  Game::debug(bool debugging)
 	if (debugging == true)
 	{
 
-
-		
-
-		//std::cout << player_Zata.alive << endl;
-		//	std::cout << enemy1.health << endl;
-
-			//gameTime.seconds += gameTime.GetDeltaTime();
-			//std::cout << "seconds:" << gameTime.sec << std::endl;
-			//if (lastspeed < player_Zata.actorSpeed)
-			//{
-			//	lastspeed = player_Zata.actorSpeed;
-			//	cout << "player Actor speed :" << lastspeed << endl;
-
-			//}
-			//if (lastspeed > player_Zata.actorSpeed)
-			//{
-			//	lastspeed = player_Zata.actorSpeed;
-			//	cout << "player Actor speed :" << lastspeed << endl;
-			//}
-			//if ((int)(gameTime.sec - remainder(gameTime.sec, 1)) % 2 == 0)
-			//{
-			//	//cout << "remainder :" << gameTime.sec/ 2 + remainder(gameTime.sec, 2) << endl;
-			//	cout << "remainder :" << gameTime.sec - remainder(gameTime.sec, 1) << endl;
-
-			//}
-			//cout << "animation number :" << player_Zata.sprite.aniIterator << endl;
 	}
 }
 
@@ -80,11 +54,9 @@ void Game::Update()
 		playerStateMonitor();
 		EnemyStateMonitor();
 		UpdateActorCollsionBoxes();
-		//enemy1.FollowBehaviour(ConvertGlmVec(player_Zata.globalPosition), gameTime.GetDeltaTime());
-	//	enemy2.FollowBehaviour(ConvertGlmVec(player_Zata.globalPosition), gameTime.GetDeltaTime());
-	//	enemy3.FollowBehaviour(ConvertGlmVec(player_Zata.globalPosition), gameTime.GetDeltaTime());
-
-
+		enemy1.FollowBehaviour(ConvertGlmVec(player_Zata.globalPosition), gameTime.GetDeltaTime());
+		enemy2.FollowBehaviour(ConvertGlmVec(player_Zata.globalPosition), gameTime.GetDeltaTime());
+		enemy3.FollowBehaviour(ConvertGlmVec(player_Zata.globalPosition), gameTime.GetDeltaTime());
 
 		debug(true);
 
@@ -110,31 +82,31 @@ void Game::ChoosePlayerDrawType(bool walkingForward)
 
 void Game::PlayerControls()
 {
-	
+
 
 	float lastrot = 0;
 
 
 
 	//for level Creation
-	if(IsKeyReleased(KEY_C) && creatorMode== false)
+	if (IsKeyReleased(KEY_C) && creatorMode == false)
 	{
-		creatorMode= true;
-	
+		creatorMode = true;
+
 	}
-	else if(creatorMode == true && IsKeyReleased(KEY_C))
+	else if (creatorMode == true && IsKeyReleased(KEY_C))
 	{
 		creatorMode = false;
 	}
-	
+
 
 	if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 	{
 		slash = true;
 
-		if(direction==0)
+		if (direction == 0)
 		{
-			player_Zata.min_Yextender= -75;
+			player_Zata.min_Yextender = -75;
 
 		}
 
@@ -149,9 +121,10 @@ void Game::PlayerControls()
 			player_Zata.max_Xextender = 75;
 
 		}
-		
+
 		if (direction == 3)
 		{
+
 			player_Zata.max_Yextender = 75;
 
 		}
@@ -163,10 +136,10 @@ void Game::PlayerControls()
 		player_Zata.max_Yextender = 0;
 		player_Zata.min_Xextender = 0;
 		player_Zata.min_Yextender = 0;
-		
+
 
 		slash = false;
-		if (direction == 2)
+		if (direction == 0)
 		{
 
 			player_Zata.swordSprite.aniIterator = player_Zata.leftSwordAnim.aniStart;
@@ -184,10 +157,10 @@ void Game::PlayerControls()
 			player_Zata.swordSprite.aniIterator = player_Zata.leftSwordAnim.aniStart;
 		}
 
-		if ((direction == 1) == false && (direction == 2) == false)
+		if (direction == 3)
 		{
 
-			player_Zata.swordSprite.aniIterator = player_Zata.rightSwordAnim.aniStart;
+			player_Zata.swordSprite.aniIterator = player_Zata.leftSwordAnim.aniStart;
 		}
 	}
 
@@ -333,13 +306,13 @@ void Game::SwordAnim(int Direction, bool slash)
 			{
 				gameTime.m_timer = 0.0f;
 
-				if (player_Zata.swordSprite.aniIterator != player_Zata.leftSwordAnim.aniEnd)
+				if (player_Zata.swordSprite.aniIterator != player_Zata.leftSwordAnim.aniStart)
 				{
-					player_Zata.swordSprite.aniIterator += 1;
+					player_Zata.swordSprite.aniIterator -= 1;
 				}
 				else
 				{
-					player_Zata.swordSprite.aniIterator = player_Zata.leftSwordAnim.aniStart;
+					player_Zata.swordSprite.aniIterator = player_Zata.leftSwordAnim.aniEnd;
 				}
 			}
 
@@ -352,13 +325,13 @@ void Game::SwordAnim(int Direction, bool slash)
 			{
 				gameTime.m_timer = 0.0f;
 
-				if (player_Zata.swordSprite.aniIterator != player_Zata.rightSwordAnim.aniEnd)
+				if (player_Zata.swordSprite.aniIterator != player_Zata.leftSwordAnim.aniStart)
 				{
-					player_Zata.swordSprite.aniIterator += 1;
+					player_Zata.swordSprite.aniIterator -= 1;
 				}
 				else
 				{
-					player_Zata.swordSprite.aniIterator = player_Zata.rightSwordAnim.aniStart;
+					player_Zata.swordSprite.aniIterator = player_Zata.leftSwordAnim.aniEnd;
 				}
 			}
 		}
@@ -554,9 +527,9 @@ void Game::playerStateMonitor()
 
 void Game::PlayerEnemyCollision()//worst way i couldve done  this 
 {
-//	DrawBoundingBox(player_Zata.actorCollisionBox, RED);
-	//DrawBoundingBox(enemy1.actorCollisionBox, RED);
-	//DrawBoundingBox(enemy2.actorCollisionBox, RED);	DrawBoundingBox(enemy3.actorCollisionBox, RED);
+	//	DrawBoundingBox(player_Zata.actorCollisionBox, RED);
+		//DrawBoundingBox(enemy1.actorCollisionBox, RED);
+		//DrawBoundingBox(enemy2.actorCollisionBox, RED);	DrawBoundingBox(enemy3.actorCollisionBox, RED);
 
 	if (CheckCollisionBoxes(player_Zata.actorCollisionBox, enemy1.actorCollisionBox) && slash == false)
 	{
