@@ -2,14 +2,23 @@
 
 Actor::Actor()
 {
-	actorCollisionBox.min.x = 0 + globalPosition.x;
-	actorCollisionBox.min.y = 0 + globalPosition.y;
-	actorCollisionBox.max.x = (sprite.individualSpriteWidth) * sprite.spriteScale + globalPosition.x;
-	actorCollisionBox.max.y = (sprite.individualSpriteHeight) * sprite.spriteScale + globalPosition.y;
-	actorCollisionBox.min.z = 0;
-	actorCollisionBox.min.z = 0;
-	actorCollisionBox.max.z = 0;
-	actorCollisionBox.max.z = 0;
+	actorattackCollisonBox.min.x = 0 + globalPosition.x;
+	actorattackCollisonBox.min.y = 0 + globalPosition.y;
+	actorattackCollisonBox.max.x = (sprite.individualSpriteWidth) * sprite.spriteScale + globalPosition.x;
+	actorattackCollisonBox.max.y = (sprite.individualSpriteHeight) * sprite.spriteScale + globalPosition.y;
+	actorattackCollisonBox.min.z = 0;
+	actorattackCollisonBox.min.z = 0;
+	actorattackCollisonBox.max.z = 0;
+	actorattackCollisonBox.max.z = 0;
+
+	actorBodyCollisonBox.min.x = globalPosition.x;
+	actorBodyCollisonBox.min.y = globalPosition.y;
+	actorBodyCollisonBox.max.x = (sprite.individualSpriteWidth) * sprite.spriteScale + globalPosition.x;
+	actorBodyCollisonBox.max.y = (sprite.individualSpriteHeight) * sprite.spriteScale + globalPosition.y;
+	actorBodyCollisonBox.min.z = 0;
+	actorBodyCollisonBox.min.z = 0;
+	actorBodyCollisonBox.max.z = 0;
+	actorBodyCollisonBox.max.z = 0;
 }
 
 
@@ -21,14 +30,24 @@ Actor::~Actor()
 
 void Actor::UpdateCollsionBox()
 {
-	actorCollisionBox.min.x = globalPosition.x + min_Xextender;
-	actorCollisionBox.min.y = globalPosition.y + min_Yextender;
-	actorCollisionBox.max.x = (sprite.individualSpriteWidth) * sprite.spriteScale + globalPosition.x + max_Xextender;
-	actorCollisionBox.max.y = (sprite.individualSpriteHeight) * sprite.spriteScale + globalPosition.y + max_Yextender;
-	actorCollisionBox.min.z = 0;
-	actorCollisionBox.min.z = 0;
-	actorCollisionBox.max.z = 0;
-	actorCollisionBox.max.z = 0;
+	actorattackCollisonBox.min.x = globalPosition.x + min_Xextender;
+	actorattackCollisonBox.min.y = globalPosition.y + min_Yextender;
+	actorattackCollisonBox.max.x = (sprite.individualSpriteWidth) * sprite.spriteScale + globalPosition.x + max_Xextender;
+	actorattackCollisonBox.max.y = (sprite.individualSpriteHeight) * sprite.spriteScale + globalPosition.y + max_Yextender;
+	actorattackCollisonBox.min.z = 0;
+	actorattackCollisonBox.min.z = 0;
+	actorattackCollisonBox.max.z = 0;
+	actorattackCollisonBox.max.z = 0;
+
+
+	actorBodyCollisonBox.min.x = globalPosition.x;
+	actorBodyCollisonBox.min.y = globalPosition.y;
+	actorBodyCollisonBox.max.x = (sprite.individualSpriteWidth) * sprite.spriteScale + globalPosition.x;
+	actorBodyCollisonBox.max.y = (sprite.individualSpriteHeight) * sprite.spriteScale + globalPosition.y;
+	actorBodyCollisonBox.min.z = 0;
+	actorBodyCollisonBox.min.z = 0;
+	actorBodyCollisonBox.max.z = 0;
+	actorBodyCollisonBox.max.z = 0;
 
 }
 

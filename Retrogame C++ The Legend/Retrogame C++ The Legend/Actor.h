@@ -12,7 +12,8 @@ public:
 	float actorAnimSpeed = 1;
 	float actorMaxSpeed = 5;
 	bool alive = true;
-	BoundingBox actorCollisionBox;
+	BoundingBox actorattackCollisonBox;
+	BoundingBox actorBodyCollisonBox;
 	int max_Xextender = 0;
 	int max_Yextender = 0;
 	int min_Xextender = 0;

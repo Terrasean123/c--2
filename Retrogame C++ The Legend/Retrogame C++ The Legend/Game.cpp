@@ -19,18 +19,21 @@ Game::~Game()
 
 }
 
-//void Game::spawnEnemies()
+//void Game::spawnEnemies(int number)
 //{
-//	for (int i = 0; i < 10; i++)
+//	EnemyGroup.reserve(number);
+//
+//
+//	for (int i = 0; i < number; i++)
 //	{
-//		Enemies enemy = Enemies();
-//		enemy.globalPosition.x = GetScreenWidth() / 2;
-//		enemy.globalPosition.y = GetScreenHeight() / 2;
-//		EnemyGroup.push_back(&enemy);
+//		EnemyGroup.emplace_back();
+//		EnemyGroup[i].globalPosition.x = GetScreenWidth() / 2;
+//		EnemyGroup[i].globalPosition.y = GetScreenHeight() / 2;
+//		EnemyGroup.push_back(EnemyGroup[i]);
 //	}
 //}
 
-void  Game::debug(bool debugging)
+void  Game::Debug(bool debugging)
 {
 
 	if (debugging == true)
@@ -44,6 +47,10 @@ void Game::Update()
 	if (gameOn == true)
 	{
 		WinCondition();
+		enemyTimer1.m_timer += gameTime.GetDeltaTime();
+		enemyTimer2.m_timer += gameTime.GetDeltaTime();
+		enemyTimer3.m_timer += gameTime.GetDeltaTime();
+
 		gameTime.m_timer += gameTime.GetDeltaTime();
 		if (player_Zata.alive == true)
 		{
@@ -57,8 +64,7 @@ void Game::Update()
 		enemy1.FollowBehaviour(ConvertGlmVec(player_Zata.globalPosition), gameTime.GetDeltaTime());
 		enemy2.FollowBehaviour(ConvertGlmVec(player_Zata.globalPosition), gameTime.GetDeltaTime());
 		enemy3.FollowBehaviour(ConvertGlmVec(player_Zata.globalPosition), gameTime.GetDeltaTime());
-
-		debug(true);
+		Debug(debug);
 
 	}
 
@@ -527,41 +533,52 @@ void Game::playerStateMonitor()
 
 void Game::PlayerEnemyCollision()//worst way i couldve done  this 
 {
-	//	DrawBoundingBox(player_Zata.actorCollisionBox, RED);
-		//DrawBoundingBox(enemy1.actorCollisionBox, RED);
-		//DrawBoundingBox(enemy2.actorCollisionBox, RED);	DrawBoundingBox(enemy3.actorCollisionBox, RED);
+	DrawBoundingBox(player_Zata.actorBodyCollisonBox, RED);
+		//DrawBoundingBox(enemy1.actorattackCollisonBox, RED);
+		//DrawBoundingBox(enemy2.actorattackCollisonBox, RED);	DrawBoundingBox(enemy3.actorattackCollisonBox, RED);
 
-	if (CheckCollisionBoxes(player_Zata.actorCollisionBox, enemy1.actorCollisionBox) && slash == false)
+	if (CheckCollisionBoxes(player_Zata.actorBodyCollisonBox, enemy1.actorattackCollisonBox) && gameTime.m_timer >= 1)
 	{
-		player_Zata.health--;
+		gameTime.m_timer = 0;
+		player_Zata.health -= 10;
 	}
-	if (CheckCollisionBoxes(player_Zata.actorCollisionBox, enemy1.actorCollisionBox) && slash == true)
+	if (CheckCollisionBoxes(player_Zata.actorattackCollisonBox, enemy1.actorattackCollisonBox) && slash == true && enemyTimer1.m_timer >= 1)
 	{
-		enemy1.health--;
-	}
-
-	if (CheckCollisionBoxes(player_Zata.actorCollisionBox, enemy2.actorCollisionBox) && slash == false)
-	{
-		player_Zata.health--;
+		enemyTimer1.m_timer = 0;
+		enemy1.health -= 30;
 	}
 
-
-	if (CheckCollisionBoxes(player_Zata.actorCollisionBox, enemy2.actorCollisionBox) && slash == true)
+	if (CheckCollisionBoxes(player_Zata.actorBodyCollisonBox, enemy2.actorattackCollisonBox) && gameTime.m_timer >= 1)
 	{
-		enemy2.health--;
+		gameTime.m_timer = 0;
+		player_Zata.health -= 10;
 	}
 
 
-	if (CheckCollisionBoxes(player_Zata.actorCollisionBox, enemy3.actorCollisionBox) && slash == false)
+	if (CheckCollisionBoxes(player_Zata.actorattackCollisonBox, enemy2.actorattackCollisonBox) && slash == true && enemyTimer2.m_timer >= 1)
 	{
-		player_Zata.health--;
+		enemyTimer2.m_timer = 0;
+		enemy2.health -= 30;
 	}
 
 
-	if (CheckCollisionBoxes(player_Zata.actorCollisionBox, enemy3.actorCollisionBox) && slash == true)
+	if (CheckCollisionBoxes(player_Zata.actorBodyCollisonBox, enemy3.actorattackCollisonBox) && gameTime.m_timer >= 1)
 	{
-		enemy3.health--;
+		gameTime.m_timer = 0;
+		player_Zata.health -= 10;
 	}
+
+
+	if (CheckCollisionBoxes(player_Zata.actorattackCollisonBox, enemy3.actorattackCollisonBox) && slash == true && enemyTimer3.m_timer >= 1)
+	{
+		enemyTimer3.m_timer = 0;
+		enemy3.health -= 30;
+	}
+
+
+
+
+
 }
 
 void Game::Draw()
@@ -575,6 +592,11 @@ void Game::Draw()
 	enemy1.Draw();
 	enemy2.Draw();
 	enemy3.Draw();
+
+	/*for (int i = 0; i < 10; i++)
+	{
+		EnemyGroup[i].Draw();
+	}*/
 
 	GameUi();
 	EndDrawing();

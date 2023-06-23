@@ -28,14 +28,14 @@ public:
 	Game();
 	~Game();
 	void init();
-	void debug(bool debugging);
+	void Debug(bool debugging);
 	void Update();
 	void Draw();
 	void PlayerControls();
 	void ChoosePlayerDrawType(bool walkingForward);
 	void PlayerAnim(int direction);
 	void WinCondition();
-	//void spawnEnemies();
+	//void spawnEnemies(int number);
 	void PlayerEnemyCollision();
 	void UpdateActorCollsionBoxes();
 	void EnemyStateMonitor();
@@ -46,10 +46,10 @@ public:
 	//bool mapCreated = false;
 	void GameUi();
 
-	//vector<Enemies*> EnemyGroup;
+//	vector<Enemies> EnemyGroup;
 	Enemies enemy1; Enemies enemy2; Enemies enemy3;
 
-
+	bool debug = true;
 	bool creatorMode =false;
 	bool slash = false;
 	bool gameOn = true;
@@ -76,6 +76,10 @@ public:
 	};
 
 	Timer gameTime;
+	Timer enemyTimer1;
+	Timer enemyTimer2;
+	Timer enemyTimer3;
+
 };
 
 
