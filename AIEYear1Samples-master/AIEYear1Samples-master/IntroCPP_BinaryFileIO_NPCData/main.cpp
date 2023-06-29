@@ -14,9 +14,9 @@ int main(int argc, char* argv[])
     DataFile data;
     int currentRecordIdx = 0;
 
-    data.Load("npc_data.dat");
+  //  data.GetRecord(currentRecordIdx,"npc_data.dat");
 
-    DataFile::Record* currentRecord = data.GetRecord(currentRecordIdx, "npc_data.dat");
+   DataFile::Record* currentRecord = data.GetRecord(currentRecordIdx, "npc_data.dat");
     Texture2D recordTexture = LoadTextureFromImage(currentRecord->image);
 
 
