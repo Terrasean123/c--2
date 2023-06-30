@@ -17,7 +17,7 @@ public:
 
 private:
 	int recordCount;
-	std::vector<Record*> records;	// delete this vector. Load only the required record 
+	Record* currentRecord;
 	std::vector <int> recordPositions; // stores the index locations of all  all records
 
 
