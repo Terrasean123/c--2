@@ -21,7 +21,7 @@ void DataFile::AddRecord(string imageFilename, string name, int age)
 	r->name = name;
 	r->age = age;
 
-	//records.push_back(r);
+	
 	recordCount++;
 }
 
@@ -31,14 +31,10 @@ DataFile::Record* DataFile::GetRecord(int index, std::string filename)// because
 
 	infile.read((char*)&recordCount, sizeof(int));
 
-	//int currentIndex = infile.tellg();
+	
 
-	for (int i = 0; i < recordCount; i++)
+	for (int i = 0; i < index; i++)
 	{
-		//recordCount++;
-		recordPositions.push_back(infile.tellg());// record index positions saved here
-
-
 		int nameSize = 0;
 		int ageSize = 0;
 		int width = 0, height = 0, format = 0, imageSize = 0;
@@ -61,22 +57,48 @@ DataFile::Record* DataFile::GetRecord(int index, std::string filename)// because
 		infile.read((char*)name, nameSize);
 		infile.read((char*)&age, ageSize);
 
-		Record* r = new Record();
-		r->image = img;
-		r->name = string(name, nameSize); //previously the constructor used copied the character sequence assuming it was already null terminated
-		r->age = age;	        		  //The fact that  our char sequence wasnt null terminated was causing the the script to overread.
+		 //previously the constructor used copied the character sequence assuming it was already null terminated
+		        		  //The fact that  our char sequence wasnt null terminated was causing the the script to overread.
 		//the new constructor uses the name size to clarify where the  code should stop reading ;
-
-	//records.push_back(r);  //no pushback required here as we are just getting the record not loading it to some place
-
 
 		delete[] imgdata;
 		delete[] name;
-		currentRecord = r;
 
 	}
+
+	int nameSize = 0;
+	int ageSize = 0;
+	int width = 0, height = 0, format = 0, imageSize = 0;
+
+	infile.read((char*)&width, sizeof(int));
+	infile.read((char*)&height, sizeof(int));
+
+	imageSize = sizeof(Color) * width * height;
+
+	infile.read((char*)&nameSize, sizeof(int));
+	infile.read((char*)&ageSize, sizeof(int));
+
+	char* imgdata = new char[imageSize];
+	infile.read(imgdata, imageSize);
+
+	Image img = LoadImageEx((Color*)imgdata, width, height);
+	char* name = new char[nameSize]();
+	int age = 0;
+
+	infile.read((char*)name, nameSize);
+	infile.read((char*)&age, ageSize);
+
+	Record* r = new Record();
+	r->image = img;
+	r->name = string(name, nameSize); //previously the constructor used copied the character sequence assuming it was already null terminated
+	r->age = age;	        		  //The fact that  our char sequence wasnt null terminated was causing the the script to overread.
+	//the new constructor uses the name size to clarify where the  code should stop reading ;
+
+	delete[] imgdata;
+	delete[] name;
+	currentRecord = r;
+
 	infile.close();
-	infile.seekg(recordPositions[index]);
 
 	return currentRecord; // return the record required
 }
