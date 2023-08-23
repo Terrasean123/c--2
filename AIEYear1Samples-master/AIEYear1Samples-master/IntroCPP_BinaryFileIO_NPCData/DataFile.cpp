@@ -9,7 +9,7 @@ DataFile::DataFile()
 
 DataFile::~DataFile()
 {
-	Clear();
+	recordCount = 0;
 }
 
 void DataFile::AddRecord(string imageFilename, string name, int age)
@@ -39,14 +39,15 @@ DataFile::Record* DataFile::GetRecord(int index, std::string filename)// because
 		int ageSize = 0;
 		int width = 0, height = 0, format = 0, imageSize = 0;
 
-		infile.read((char*)&width, sizeof(int));
+		infile.read((char*)&width, sizeof(int));//we read the height and width of the image and;
 		infile.read((char*)&height, sizeof(int));
 
 		imageSize = sizeof(Color) * width * height;
 
-		infile.read((char*)&nameSize, sizeof(int));
+		infile.read((char*)&nameSize, sizeof(int));// as well as the name size  and agesize of the of the name and age; 
 		infile.read((char*)&ageSize, sizeof(int));
-		infile.seekg(nameSize + ageSize + imageSize,ios_base::cur);
+		infile.seekg(nameSize + ageSize + imageSize,ios_base::cur);//The is Done so You know the Amount of  bits
+		//                                                          nessacary to skip through an entire record to the next without loading any images and leaking memory
 
 		//previously the constructor used copied the character sequence assuming it was already null terminated
 	  //The fact that  our char sequence wasnt null terminated was causing the the script to overread.

@@ -31,11 +31,5 @@ public:
 
 	int GetRecordCount() { return recordCount; };
 
-	//void Save(string filename);
-	///void Load(string filename);
-
-private:
-	void Clear();
-
 };
 
